@@ -1,0 +1,163 @@
+/*
+ * Tokyo Night Color Palette
+ */
+@define-color tn-bg #1a1b26;
+@define-color tn-bg-alt #1f2335;
+@define-color tn-fg #c0caf5;
+
+@define-color tn-blue #7aa2f7;
+@define-color tn-cyan #7dcfff;
+@define-color tn-purple #bb9af7;
+@define-color tn-red #f7768e;
+@define-color tn-orange #ff9e64;
+@define-color tn-yellow #e0af68;
+@define-color tn-green #9ece6a;
+
+/* Waybar background */
+window#waybar {
+    background: @tn-bg;
+    color: @tn-fg;
+    border-bottom: 1px solid @tn-bg-alt;
+    font-family: "JetBrainsMono Nerd Font", "FiraCode Nerd Font", monospace;
+    font-size: 12px;
+}
+
+/* Common module styling */
+#waybar > box > * {
+    padding: 0 8px;
+    background: @tn-bg-alt;
+    margin: 4px 4px;
+    border-radius: 8px;
+}
+
+/*
+ * Virtual Desktops (cffi/virtual-desktops as #waybar-vd)
+ */
+#waybar-vd button {
+    background: transparent;
+    color: @tn-blue;
+    padding: 3px 8px;
+    margin: 0 2px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: 0.2s;
+}
+
+/* focused workspace */
+#waybar-vd button.focused {
+    background: @tn-blue;
+    color: @tn-bg;
+    border-color: @tn-cyan;
+}
+
+/* occupied but not focused */
+#waybar-vd button.occupied {
+    color: @tn-cyan;
+}
+
+/* empty workspace */
+#waybar-vd button.empty {
+    color: @tn-bg-alt;
+}
+
+/* urgent window */
+#waybar-vd button.urgent {
+    background: @tn-red;
+    color: @tn-bg;
+}
+
+/*
+ * Workspaces (default Hyprland module)
+ */
+#workspaces button {
+    background: transparent;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+#workspaces button.focused {
+    background: @tn-purple;
+    color: @tn-bg;
+}
+
+#workspaces button:hover {
+    background: @tn-bg-alt;
+}
+
+/*
+ * System tray
+ */
+#tray {
+    padding: 0 8px;
+}
+#tray > .passive {
+    opacity: 0.5;
+}
+#tray > .active {
+    opacity: 1.0;
+}
+#tray > .needs-attention {
+    background: @tn-red;
+}
+
+/*
+ * Clock
+ */
+#clock {
+    color: @tn-purple;
+}
+
+/*
+ * Battery
+ */
+#battery.charging {
+    color: @tn-green;
+}
+#battery.warning {
+    color: @tn-orange;
+}
+#battery.critical {
+    color: @tn-red;
+}
+
+/*
+ * Network
+ */
+#network {
+    color: @tn-blue;
+}
+
+/*
+ * Backlight
+ */
+#backlight {
+    color: @tn-yellow;
+}
+
+/*
+ * CPU / Memory
+ */
+#cpu {
+    color: @tn-cyan;
+}
+#memory {
+    color: @tn-green;
+}
+
+/*
+ * Sound
+ */
+#pulseaudio {
+    color: @tn-purple;
+}
+#pulseaudio.muted {
+    color: @tn-bg-alt;
+}
+
+/*
+ * Custom modules (your scripts)
+ */
+#custom-* {
+    color: @tn-fg;
+}
+
