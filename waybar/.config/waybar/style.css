@@ -23,7 +23,7 @@ window#waybar {
 }
 
 /* Common module styling */
-#waybar > box > * {
+#waybar>box>* {
     padding: 0 8px;
     background: @tn-bg-alt;
     margin: 4px 4px;
@@ -90,13 +90,16 @@ window#waybar {
 #tray {
     padding: 0 8px;
 }
-#tray > .passive {
+
+#tray>.passive {
     opacity: 0.5;
 }
-#tray > .active {
+
+#tray>.active {
     opacity: 1.0;
 }
-#tray > .needs-attention {
+
+#tray>.needs-attention {
     background: @tn-red;
 }
 
@@ -113,9 +116,11 @@ window#waybar {
 #battery.charging {
     color: @tn-green;
 }
+
 #battery.warning {
     color: @tn-orange;
 }
+
 #battery.critical {
     color: @tn-red;
 }
@@ -140,6 +145,7 @@ window#waybar {
 #cpu {
     color: @tn-cyan;
 }
+
 #memory {
     color: @tn-green;
 }
@@ -150,6 +156,7 @@ window#waybar {
 #pulseaudio {
     color: @tn-purple;
 }
+
 #pulseaudio.muted {
     color: @tn-bg-alt;
 }
@@ -159,5 +166,11 @@ window#waybar {
  */
 #custom-* {
     color: @tn-fg;
+}
+
+#custom-bluetooth {
+    font-family: "Font Awesome 7 Free", "Font Awesome 6 Brands", "Font Awesome v4 Compatibility";
+    font-size: 16px;
+    padding: 0 8px;
 }
 

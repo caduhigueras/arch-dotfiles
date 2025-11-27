@@ -1,11 +1,7 @@
 // -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
     "modules-left": [
         // "hyprland/workspaces"
         "cffi/virtual-desktops",
@@ -16,13 +12,14 @@
     ],
     "modules-right": [
         // "idle_inhibitor",
-        "mpd",
+        // "mpd",
         "cpu",
         "memory",
         "pulseaudio",
         "network",
-        "tray",
+        "custom/bluetooth",
         "custom/power"
+        // "tray",
         // "power-profiles-daemon",
         // "temperature",
         // "backlight",
@@ -31,23 +28,14 @@
         // "battery",
         // "battery#bat2",
     ],
-    // Modules configuration
-    // "sway/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
+    "custom/bluetooth": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": ""
+        },
+        "on-click": "alacritty -e bluetui",
+        "tooltip": false
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -106,10 +94,10 @@
     "tray": {
         // "icon-size": 21,
         "spacing": 10,
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
+        "icons": {
+            "blueman": "bluetooth"
+            //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        }
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -188,7 +176,8 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "   ",
+        // "format-ethernet": "{ipaddr}/{cidr}  ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
@@ -233,7 +222,7 @@
         "format": "⏻ ",
         "tooltip": false,
         "menu": "on-click",
-        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+        "menu-file": "/home/arch/.config/waybar/resources/custom_modules/power_menu.xml", // Menu file in resources folder
         "menu-actions": {
             "shutdown": "shutdown",
             "reboot": "reboot",
@@ -247,7 +236,7 @@
         "subscribe": true,
         "format": "{name}",
         "format-focused": "<b>{name}</b>",
-        "initial": false,
-        "show_empty": false
+        "initial": true,
+        "show_empty": true
     }
 }
