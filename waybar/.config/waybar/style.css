@@ -37,14 +37,14 @@ window#waybar {
  * Virtual Desktops (cffi/virtual-desktops as #waybar-vd)
  */
 #waybar-vd {
-    padding: 5px 0px;
+    padding: 0px 5px 0 0;
     background: transparent;
 }
 
 #waybar-vd button {
     color: #414868;
     font-weight: normal;
-    font-size: 10px;
+    font-size: 0px;
     font-family: inherit;
     padding: 0;
     margin: 0;
@@ -54,6 +54,7 @@ window#waybar {
     background-repeat: no-repeat;
     background-size: 7px 7px;
     background-position: center center;
+    min-width: 15px;
 }
 
 #waybar-vd button.hover,
@@ -137,13 +138,6 @@ window#waybar {
 }
 
 /*
- * Network
- */
-#network {
-    color: @tn-blue;
-}
-
-/*
  * Backlight
  */
 #backlight {
@@ -167,21 +161,191 @@ window#waybar {
  */
 #pulseaudio {
     color: @primary;
+    padding-left: 20px;
+    background-repeat: no-repeat;
+    background-position: left center;
 }
 
-#pulseaudio.muted {
-    color: @tn-bg-alt;
+#pulseaudio.normal {
+    background: url("./resources/img/volume-low.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
 }
 
-/*
- * Custom modules (your scripts)
- */
-#custom-* {
-    color: @tn-fg;
+#pulseaudio.high {
+    background: url("./resources/img/volume-high.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+#pulseaudio.muted,
+#pulseaudio.low {
+    background: url("./resources/img/volume-muted.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+/**
+* custom recording
+*/
+#custom-rec.recording {
+    color: #ff3333;
+    font-weight: 700;
+}
+
+#custom-cpu {
+    padding-left: 20px;
+    background: url("./resources/img/cpu-3.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+#custom-cpu.normal {
+    color: #9ECE6A;
+}
+
+#custom-cpu.high {
+    color: #FF9E64;
+}
+
+#custom-cpu.limit {
+    color: #F7768E;
+}
+
+#custom-memory {
+    padding-left: 20px;
+    background: url("./resources/img/memory.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin-right: 10px;
+}
+
+#custom-memory.normal {
+    color: #9ECE6A;
+}
+
+#custom-memory.high {
+    color: #FF9E64;
+}
+
+#custom-memory.limit {
+    color: #F7768E;
+}
+
+#custom-mic.low {
+    padding-left: 20px;
+    background: url("./resources/img/mic-disconnected.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin-right: 10px;
+}
+
+#custom-mic.normal {
+    padding-left: 20px;
+    background: url("./resources/img/mic-connected.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    margin-right: 10px;
+}
+
+#network {
+    padding-left: 10px;
+    background: url("./resources/img/wifi-disconnected.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+#network.disabled {
+    background: url("./resources/img/wifi-disconnected.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#network.disconnected {
+    background: url("./resources/img/wifi-disconnected.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#network.ethernet {
+    background: url("./resources/img/internet.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#network.wifi {
+    background: url("./resources/img/wifi-connected.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #custom-bluetooth {
-    font-family: "Font Awesome 7 Free", "Font Awesome 6 Brands", "Font Awesome v4 Compatibility";
-    font-size: 16px;
-    padding: 0 8px;
+    padding-left: 10px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#custom-bluetooth.off {
+    background: url("./resources/img/bluetooth-failed.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#custom-bluetooth.disconnected {
+    background: url("./resources/img/bluetooth-disconnected.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#custom-bluetooth.connected {
+    background: url("./resources/img/bluetooth-connected.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#custom-power {
+    background: url("./resources/img/gshutdown.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding-left: 10px;
+}
+
+tooltip.background {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+
+tooltip.background.csd {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+
+tooltip>box {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+
+tooltip decoration {
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+}
+
+/* Your visible surface */
+tooltip label {
+    background-color: rgba(26, 27, 38, 0.8);
+    color: #A9B1D6;
+    padding: 10px 15px;
+    border-radius: 0;
+    border: 1px solid #FF9E64;
+    box-shadow: none;
 }

@@ -38,12 +38,16 @@
     },
     //----------- Modules right
     "modules-right": [
-        "cpu",
-        "memory",
+        "custom/rec",
+        "custom/cpu",
+        "custom/memory",
         "pulseaudio",
+        "custom/mic",
         "network",
         "custom/bluetooth",
         "custom/power"
+        // "memory",
+        // "cpu",
         // "idle_inhibitor",
         // "mpd",
         // "tray",
@@ -55,22 +59,64 @@
         // "battery",
         // "battery#bat2",
     ],
-    "cpu": {
-        "format": " {usage}%",
-        "on-click": "alacritty --class centered_float_window -e btop",
-        "tooltip": false
+    "custom/rec": {
+        "exec": "/home/arch/.local/bin/waybar-rec.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "hyprcap rec -s window:active -w -n"
     },
-    "memory": {
-        "format": " {}%",
+    "custom/cpu": {
+        "exec": "/home/arch/.local/bin/cpu-usage.sh",
+        "return-type": "json",
+        "interval": 1,
         "on-click": "alacritty --class centered_float_window -e btop"
     },
-    "custom/bluetooth": {
-        "format": "{icon}",
-        "format-icons": {
-            "default": ""
+    "custom/memory": {
+        "exec": "/home/arch/.local/bin/memory-usage.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "alacritty --class centered_float_window -e btop"
+    },
+    "pulseaudio": {
+        "format": "{volume}%",
+        "states": {
+            "low": 0,
+            "normal": 50,
+            "high": 100
         },
-        "on-click": "alacritty -e bluetui",
-        "tooltip": false
+        "on-click": "alacritty --class centered_float_window -e wiremix"
+    },
+    "custom/mic": {
+        "exec": "/home/arch/.local/bin/mic.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-scroll-up": "/home/arch/.local/bin/mic-set.sh +5",
+        "on-scroll-down": "/home/arch/.local/bin/mic-set.sh -5",
+        "format": "{text}",
+        "tooltip": true,
+        "on-click": "alacritty --class centered_float_window -e wiremix"
+    },
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": " ",
+        "format-disconnected": " ",
+        "on-click": "alacritty --class centered_float_window -e impala"
+    },
+    "custom/bluetooth": {
+        "exec": "/home/arch/.local/bin/bluetooth.sh",
+        "return-type": "json",
+        "interval": 2,
+        "format": " ",
+        "tooltip": true,
+        "on-click": "alacritty --class centered_float_window -e bluetui",
+    },
+    "custom/power": {
+        "format": " ",
+        "tooltip": true,
+        "tooltip-format": "Open Power Menu",
+        "on-click": "walker -m menus:power_menu"
     },
     "keyboard-state": {
         "numlock": true,
@@ -197,40 +243,29 @@
             "power-saver": ""
         }
     },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "   ",
-        // "format-ethernet": "{ipaddr}/{cidr}  ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        // "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "alacritty --class centered_float_window -e impala"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        // "format-bluetooth": "{volume}% {icon} {format_source}",
-        // "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        },
-        "on-click": "alacritty --class centered_float_window -e wiremix"
-    },
+    // "pulseaudio": {
+    //     // "scroll-step": 1, // %, can be a float
+    //     "format": "{icon} {volume}% {format_source}",
+    //     // "format-bluetooth": "{volume}% {icon} {format_source}",
+    //     // "format-bluetooth-muted": " {icon} {format_source}",
+    //     "format-muted": " {format_source}",
+    //     "format-source": " {volume}%",
+    //     "format-source-muted": "",
+    //     "format-icons": {
+    //         "headphone": "",
+    //         "hands-free": "",
+    //         "headset": "",
+    //         "phone": "",
+    //         "portable": "",
+    //         "car": "",
+    //         "default": [
+    //             "",
+    //             "",
+    //             ""
+    //         ]
+    //     },
+    //     "on-click": "alacritty --class centered_float_window -e wiremix"
+    // },
     "custom/media": {
         "format": "{icon} {text}",
         "return-type": "json",
@@ -242,17 +277,5 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
-    "custom/power": {
-        "format": "⏻ ",
-        "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "/home/arch/.config/waybar/resources/custom_modules/power_menu.xml", // Menu file in resources folder
-        "menu-actions": {
-            "shutdown": "shutdown",
-            "reboot": "reboot",
-            "suspend": "systemctl suspend",
-            "hibernate": "systemctl hibernate"
-        }
     }
 }
