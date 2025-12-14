@@ -1,0 +1,42 @@
+@define-color selected-text #7dcfff;
+@define-color text #cfc9c2;
+@define-color base #1a1b26;
+@define-color border #33ccff;
+@define-color foreground #cfc9c2;
+@define-color background #1a1b26;
+
+* {
+    font-family: "JetBrainsMonoNL Nerd Font";
+}
+
+popover {
+    border-radius: 0px;
+    padding: 0;
+}
+
+.box-wrapper {
+    background: rgba(26, 27, 38, 0.95);
+    border: 2px solid #FF9E64;
+    border-radius: 0px;
+    padding: 20px 30px;
+}
+
+.input {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 20px;
+    padding: 10px 15px;
+    background: #202124;
+}
+
+.search-container {
+    border: none;
+}
+
+.item-box {
+    padding: 0;
+}
+
+.item-subtext {
+    color: yellow;
+}

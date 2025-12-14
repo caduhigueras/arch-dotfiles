@@ -1,0 +1,19 @@
+name = "system_menu"
+name_pretty = "System Menu"
+icon = "bookmark"
+
+[[entries]]
+text = "System Monitor"
+actions = { "system_monitor" = "alacritty --class centered_float_window -e btop" }
+
+[[entries]]
+text = "Wifi and Network"
+actions = { "wifi_network" = "alacritty --class centered_float_window -e impala" }
+
+[[entries]]
+text = "Bluetooh"
+actions = { "bluetooth" = "alacritty --class centered_float_window -e bluetui" }
+
+[[entries]]
+text = "Sound Controls"
+actions = { "sound_controls" = "alacritty --class centered_float_window -e wiremix" }

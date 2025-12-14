@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PhpStorm 2025.2.5
+Exec="/home/arch/.local/share/JetBrains/Toolbox/apps/phpstorm/bin/phpstorm" %u
+Version=1.0
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+Icon=/home/arch/.local/share/JetBrains/Toolbox/dotDesktopIcons/jetbrains-phpstorm-afed1b12-35d8-4d53-9000-b3beb3b2c7a7.desktop.icon.svg
+Comment=A smart IDE for PHP and Web
+StartupWMClass=jetbrains-phpstorm
+StartupNotify=true

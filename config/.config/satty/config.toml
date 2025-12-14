@@ -1,0 +1,8 @@
+[general]
+# Exit directly after copy/save action
+early-exit = true
+# Draw corners of rectangles round if the value is greater than 0 (0 disables rounded corners)
+corner-roundness = 0
+# Filename to use for saving action. Omit to disable saving to file. Might contain format specifiers: https://docs.rs/chrono/latest/chrono/format/strftime/index.html
+# starting with 0.20.0, can contain leading tilde (~) for home directory
+output-filename = "/home/arch/Pictures/Screenshots/test-%Y-%m-%d_%H:%M:%S.png"

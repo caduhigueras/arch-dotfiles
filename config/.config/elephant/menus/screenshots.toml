@@ -1,0 +1,19 @@
+name = "screenshots_menu"
+name_pretty = "Screenshots Menu"
+icon = ""
+
+[[entries]]
+text = "Screenshot"
+actions = { "screenhot_region" = "hyprshot -m region --raw | satty -f -" }
+
+[[entries]]
+text = "Screenshot - Window"
+actions = { "screenhot_window" = "hyprshot -m active -m output --raw | satty -f -" }
+
+[[entries]]
+text = "Screencast"
+actions = { "screencast_region" = "hyprcap rec -s region -w -n" }
+
+[[entries]]
+text = "Screencast - Window"
+actions = { "screencast_window" = "hyprcap rec -s window:active -w -n" }

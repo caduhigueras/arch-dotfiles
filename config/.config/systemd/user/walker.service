@@ -1,0 +1,10 @@
+[Unit]
+Description=Walker Menu Service
+
+[Service]
+ExecStart=/usr/local/bin/walker --gapplication-service
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

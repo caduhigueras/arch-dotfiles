@@ -1,0 +1,29 @@
+name = "kr_menu"
+name_pretty = "KodingRocks Menu"
+icon = "bookmark"
+fixed_order = true
+# Setup
+# System
+# Power Menu
+# Shortcuts
+# Screenshots
+
+[[entries]]
+text = "System"
+submenu = "system_menu"
+
+[[entries]]
+text = "Setup"
+submenu = "setup_menu"
+
+[[entries]]
+text = "Power Menu"
+submenu = "power_menu"
+
+[[entries]]
+text = "Shortcuts"
+submenu = "shortcuts_menu"
+
+[[entries]]
+text = "Screenshots"
+submenu = "screenshots_menu"

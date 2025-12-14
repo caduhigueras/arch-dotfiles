@@ -1,0 +1,19 @@
+name = "power_menu"
+name_pretty = "Power Menu"
+icon = "bookmark"
+
+[[entries]]
+text = "Lock"
+actions = { "lock_screen" = "hyprlock" }
+
+[[entries]]
+text = "Suspend"
+actions = { "suspend" = "systemctl suspend" }
+
+[[entries]]
+text = "Restart"
+actions = { "reboot" = "systemctl reboot" }
+
+[[entries]]
+text = "Shutdown"
+actions = { "shutdown" = "systemctl poweroff" }

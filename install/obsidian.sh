@@ -17,6 +17,9 @@ git push
 EOF
 
 sudo tee /etc/cron.d/sync_obsidian > /dev/null <<'EOF'
-0 * * * * /usr/local/bin/obsidian_sync
+0 * * * * root /usr/local/bin/obsidian_sync
+
 EOF
 
+sudo chown root:root /etc/cron.d/sync_obsidian
+sudo chmod 644 /etc/cron.d/sync_obsidian

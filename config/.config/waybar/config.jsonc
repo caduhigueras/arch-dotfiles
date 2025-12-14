@@ -1,0 +1,281 @@
+// -*- mode: jsonc -*-
+{
+    // "height": 25, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    //----------- Modules Left
+    "modules-left": [
+        "cffi/virtual-desktops",
+        "hyprland/window"
+    ],
+    "cffi/virtual-desktops": {
+        "module_path": "/home/arch/.config/waybar/modules/libwaybar_vd.so",
+        "backend": "hyprland",
+        "subscribe": true,
+        "format": "{icon}",
+        "format_icons": {
+            "1": "●",
+            "2": "●",
+            "3": "●",
+            "4": "●",
+            "5": "●"
+        },
+        "initial": true,
+        "show_empty": true
+    },
+    "hyprland/window": {
+        "max-length": 40,
+        "format": "{title}: {class}"
+    },
+    //----------- Modules center
+    "modules-center": [
+        "clock"
+    ],
+    "clock": {
+        "timezone": "Europe/Madrid",
+        "format": "{:%b %d %H:%M}",
+        "on-click": "alacritty --class centered_float_window -e kr_calendar_tui",
+        "tooltip-format": "{:%A, %d of %B of %Y - %H:%M}"
+    },
+    //----------- Modules right
+    "modules-right": [
+        "custom/rec",
+        "custom/cpu",
+        "custom/memory",
+        "pulseaudio",
+        "custom/mic",
+        "network",
+        "custom/bluetooth",
+        "custom/power"
+        // "memory",
+        // "cpu",
+        // "idle_inhibitor",
+        // "mpd",
+        // "tray",
+        // "power-profiles-daemon",
+        // "temperature",
+        // "backlight",
+        // "keyboard-state",
+        // "sway/language",
+        // "battery",
+        // "battery#bat2",
+    ],
+    "custom/rec": {
+        "exec": "waybar-rec",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "hyprcap rec -s window:active -w -n"
+    },
+    "custom/cpu": {
+        "exec": "waybar-cpu-usage",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "alacritty --class centered_float_window -e btop"
+    },
+    "custom/memory": {
+        "exec": "waybar-memory-usage",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "alacritty --class centered_float_window -e btop"
+    },
+    "pulseaudio": {
+        "format": "{volume}%",
+        "states": {
+            "low": 0,
+            "normal": 50,
+            "high": 100
+        },
+        "on-click": "alacritty --class centered_float_window -e wiremix"
+    },
+    "custom/mic": {
+        "exec": "waybar-mic",
+        "return-type": "json",
+        "interval": 1,
+        "on-scroll-up": "waybar-mic-set +5",
+        "on-scroll-down": "waybar-mic-set -5",
+        "format": "{text}",
+        "tooltip": true,
+        "on-click": "alacritty --class centered_float_window -e wiremix"
+    },
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": " ",
+        "format-disconnected": " ",
+        "on-click": "alacritty --class centered_float_window -e impala"
+    },
+    "custom/bluetooth": {
+        "exec": "waybar-bluetooth",
+        "return-type": "json",
+        "interval": 2,
+        "format": " ",
+        "tooltip": true,
+        "on-click": "alacritty --class centered_float_window -e bluetui"
+    },
+    "custom/power": {
+        "format": " ",
+        "tooltip": true,
+        "tooltip-format": "Open Power Menu",
+        "on-click": "walker -m menus:power_menu"
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": [
+            "",
+            ""
+        ],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
+        "icons": {
+            "blueman": "bluetooth"
+            //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        }
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    // "pulseaudio": {
+    //     // "scroll-step": 1, // %, can be a float
+    //     "format": "{icon} {volume}% {format_source}",
+    //     // "format-bluetooth": "{volume}% {icon} {format_source}",
+    //     // "format-bluetooth-muted": " {icon} {format_source}",
+    //     "format-muted": " {format_source}",
+    //     "format-source": " {volume}%",
+    //     "format-source-muted": "",
+    //     "format-icons": {
+    //         "headphone": "",
+    //         "hands-free": "",
+    //         "headset": "",
+    //         "phone": "",
+    //         "portable": "",
+    //         "car": "",
+    //         "default": [
+    //             "",
+    //             "",
+    //             ""
+    //         ]
+    //     },
+    //     "on-click": "alacritty --class centered_float_window -e wiremix"
+    // },
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}

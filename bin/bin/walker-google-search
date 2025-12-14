@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+urlencode() {
+  local s="$1"
+  local out=""
+  local i c
+  for ((i=0; i<${#s}; i++)); do
+    c="${s:i:1}"
+    case "$c" in
+      [a-zA-Z0-9.~_-]) out+="$c" ;;
+      ' ') out+='%20' ;;
+      *) printf -v hex '%%%02X' "'$c"; out+="$hex" ;;
+    esac
+  done
+  printf '%s' "$out"
+}
+
+browser_cmd="$1"
+query="$2"
+
+# ---- guard ----
+# trim spaces (optional but nice)
+query="${query#"${query%%[![:space:]]*}"}"
+query="${query%"${query##*[![:space:]]}"}"
+
+if [[ -z "$query" || "$query" == "CNCLD" ]]; then
+  exit 0
+fi
+
+enc=$(urlencode "$query")
+
+# run browser command with the URL
+$browser_cmd "https://www.google.com/search?q=$enc"
+

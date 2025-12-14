@@ -1,0 +1,10 @@
+theme = "tokyo-night"
+
+[builtins.applications]
+show_sub_when_single = false
+show_icon_when_single = false
+show_generic = false
+
+[builtins.applications.actions]
+enabled = true
+hide_category = true

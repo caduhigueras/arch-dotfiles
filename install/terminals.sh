@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo pacman -S --needed --noconfirm ghostty
+sudo pacman -S --needed --noconfirm ghostty alacritty

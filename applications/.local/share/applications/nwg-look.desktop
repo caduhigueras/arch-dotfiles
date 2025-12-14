@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=GTK Settings
+Name[pl]=Ustawienia GTK
+Keywords=windows;preferences;settings;theme;style;appearance;look;
+Keywords[pl]=okna;preferencje;ustawienia;motyw;styl;wygląd;
+Icon=nwg-look
+Exec=nwg-look
+NotShowIn=GNOME;KDE;XFCE;MATE;
+StartupNotify=true
+Categories=GTK;Settings;DesktopSettings;
