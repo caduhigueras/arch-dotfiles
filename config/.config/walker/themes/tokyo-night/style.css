@@ -37,6 +37,6 @@ popover {
     padding: 0;
 }
 
-.item-subtext {
-    color: yellow;
+.custom-item-box {
+    padding: 200px;
 }

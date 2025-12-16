@@ -1,0 +1,28 @@
+name = "shortcuts_menu"
+name_pretty = "Shortcuts Menu"
+icon = "bookmark"
+fixed_order = true
+
+[[entries]]
+text = "Hyprland Keybindings"
+submenu = "hyprland_keybindings_menu"
+
+[[entries]]
+text = "Menus"
+submenu = "hyprland_keybindings_menu"
+
+[[entries]]
+text = "APPs and WebAPPs"
+submenu = "hyprland_keybindings_menu"
+
+[[entries]]
+text = "Neovim"
+submenu = "hyprland_keybindings_menu"
+
+[[entries]]
+text = "Yazi"
+submenu = "hyprland_keybindings_menu"
+
+[[entries]]
+text = "Terminal Commands"
+submenu = "hyprland_keybindings_menu"
