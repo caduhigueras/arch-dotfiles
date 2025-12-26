@@ -1,0 +1,62 @@
+[
+    {
+        "Text": "go to definition",
+        "Subtext": "gd",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "find the references for the word under cursor",
+        "Subtext": "gr",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "jump to implementation",
+        "Subtext": "gI",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "jump to the type of the word",
+        "Subtext": "LEADER + D",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "find all symbols in current document (vars, functions, types, etc)",
+        "Subtext": "LEADER + ds",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "find all symbols in current workspace",
+        "Subtext": "LEADER + ws",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "rename the variable under the cursor",
+        "Subtext": "LEADER + rn",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "execute code action, like lsp suggestions",
+        "Subtext": "LEADER + ca",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "hover documentation for current word under the cursor",
+        "Subtext": "k",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "go to Declaration",
+        "Subtext": "gD",
+        "Value": "",
+        "Actions": []
+    }
+]

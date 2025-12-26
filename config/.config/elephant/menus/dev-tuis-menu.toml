@@ -1,0 +1,20 @@
+name = "dev_tuis_menu"
+name_pretty = "Dev TUIs"
+icon = "bookmark"
+fixed_order = false
+
+[[entries]]
+text = "Lazy Docker"
+actions = { "lazydocker" = "alacritty --class centered_float_window -e lazydocker" }
+
+[[entries]]
+text = "Yazi"
+actions = { "yazi" = "alacritty --class centered_float_window -e yazi" }
+
+[[entries]]
+text = "Lazy Git"
+actions = { "lazygit" = "alacritty --class centered_float_window -e lazygit" }
+
+[[entries]]
+text = "Lazy SQL"
+actions = { "lazysql" = "alacritty --class centered_float_window -e lazysql" }

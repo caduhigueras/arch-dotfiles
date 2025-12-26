@@ -1,9 +1,0 @@
-name = "keybindings"
-name_pretty = "Keybindings Menu"
-icon = "bookmark"
-
-[[entries]]
-text = "Lock"
-subtext = "Lock stc"
-actions = { "lock_screen" = "hyprlock" }
-

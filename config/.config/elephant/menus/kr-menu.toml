@@ -2,11 +2,10 @@ name = "kr_menu"
 name_pretty = "KodingRocks Menu"
 icon = "bookmark"
 fixed_order = true
-# Setup
-# System
-# Power Menu
-# Shortcuts
-# Screenshots
+
+[[entries]]
+text = "Dev"
+submenu = "dev_menu"
 
 [[entries]]
 text = "System"
@@ -27,3 +26,5 @@ submenu = "shortcuts_menu"
 [[entries]]
 text = "Screenshots"
 submenu = "screenshots_menu"
+
+# TODO: themes

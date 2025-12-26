@@ -9,12 +9,11 @@ actions = { "install_webapp" = "alacritty --class centered_float_window -e webap
 [[entries]]
 text = "Install TUI"
 actions = { "install_tui" = "alacritty --class centered_float_window -e tui-install" }
-#
-# [[entries]]
-# text = "Restart"
-# actions = { "reboot" = "systemctl reboot" }
-#
-# [[entries]]
-# text = "Shutdown"
-# actions = { "shutdown" = "systemctl poweroff" }
-#
+
+[[entries]]
+text = "Install Packages"
+actions = { "install_packages" = "alacritty --class centered_float_window -e pkg-install" }
+
+[[entries]]
+text = "Install AUR"
+actions = { "install_aur" = "alacritty --class centered_float_window -e pkg-aur-install" }

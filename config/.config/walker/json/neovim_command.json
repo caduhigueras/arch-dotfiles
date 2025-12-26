@@ -1,0 +1,49 @@
+[
+    {
+        "Text": "Search and Replace All Occurrences",
+        "Subtext": "%s/searchword/replacewith/g",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search and Replace with Confirmation",
+        "Subtext": "%s/searchword/replacewith/gc",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Open Register (Then access with \")",
+        "Subtext": "reg",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Copy from register (where n is register number)",
+        "Subtext": "\"ny",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Remove a character and everything after. (Ex. with \")",
+        "Subtext": "%s/\".*$//",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Remove everything after a character. (Ex. with \")",
+        "Subtext": "%s/\"\\zs.*$//",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Remove all blank lines",
+        "Subtext": "g/^\\s*$/d",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Remove non ascii chars",
+        "Subtext": "%s/[^\\x00-\\x7F]//g",
+        "Value": "",
+        "Actions": []
+    }]

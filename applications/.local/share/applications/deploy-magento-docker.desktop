@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Deploy Magento Docker
+Comment=Deploy Magento Docker
+Exec=$TERMINAL --class="centered_float_window" -e launch-mage-docker
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/Deploy Magento Docker.png
+StartupNotify=true

@@ -1,0 +1,44 @@
+name = "dev_apps_menu"
+name_pretty = "Dev APPs"
+icon = "bookmark"
+fixed_order = false
+
+[[entries]]
+text = "Neovim"
+actions = { "open_nvim" = "alacritty -e nvim" }
+icon = "nvim"
+
+[[entries]]
+text = "PHP Storm"
+actions = { "open_phpstorm" = "uwsm app -- phpstorm" }
+icon = "/home/arch/.local/share/applications/icons/phpstorm.svg"
+
+[[entries]]
+text = "RustRover"
+actions = { "open_rustrover" = "uwsm app -- rustrover" }
+icon = "/home/arch/.local/share/applications/icons/rustrover.svg"
+
+[[entries]]
+text = "Jenkins (Prod)"
+actions = { "open_jenkins_prod" = "webapp-launcher https://add-private-ip-here" }
+icon = "/home/arch/.local/share/applications/icons/jenkins.png"
+
+[[entries]]
+text = "Jenkins (Preprod)"
+actions = { "open_jenkins_preprod" = "webapp-launcher https://add-private-ip-here" }
+icon = "/home/arch/.local/share/applications/icons/jenkins.png"
+
+[[entries]]
+text = "Bitbucket"
+actions = { "open_bitbucket" = "webapp-launcher https://bitbucket.org/onedirect/workspace/overview/" }
+icon = "/home/arch/.local/share/applications/icons/bitbucket.png"
+
+[[entries]]
+text = "Jira"
+actions = { "open_jira" = "webapp-launcher https://onedirect.atlassian.net/jira/software/c/projects/DS1/boards/33" }
+icon = "/home/arch/.local/share/applications/icons/jira.png"
+
+[[entries]]
+text = "GitHub"
+actions = { "open_github" = "webapp-launcher https://github.com" }
+icon = "/home/arch/.local/share/applications/icons/github.png"

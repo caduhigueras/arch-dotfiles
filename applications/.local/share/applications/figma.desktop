@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Figma
+Comment=Figma
+Exec=webapp-launcher https://www.figma.com/files/team/
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/figma.png
+StartupNotify=true

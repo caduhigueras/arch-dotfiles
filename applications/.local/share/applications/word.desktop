@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Word
+Comment=Word
+Exec=webapp-launcher https://docs.google.com/document/
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/word.png
+StartupNotify=true

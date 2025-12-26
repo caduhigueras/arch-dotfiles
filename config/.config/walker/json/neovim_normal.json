@@ -1,0 +1,278 @@
+[
+    {
+        "Text": "Move left",
+        "Subtext": "h",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Move down",
+        "Subtext": "j",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Move up",
+        "Subtext": "k",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Move right",
+        "Subtext": "l",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Moves to the end of word (5e moves to the end of the 5th word)",
+        "Subtext": "e",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Move to next word",
+        "Subtext": "w",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Move to previous word",
+        "Subtext": "b",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Jumps to beginning of the line",
+        "Subtext": "0",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Moves to the end of the line",
+        "Subtext": "$",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves to the first non empty character of the line",
+        "Subtext": "^ + ENTER",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Finds next occurrence of char typed after f",
+        "Subtext": "f",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Finds previous occurrence of char typed after f",
+        "Subtext": "F",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "move sentence down",
+        "Subtext": ")",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "move sentence up",
+        "Subtext": "(",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "move paragraph down",
+        "Subtext": "}",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "move paragraph up",
+        "Subtext": "{",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves half page up",
+        "Subtext": "CTRL + u",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves half page down",
+        "Subtext": "CTRL + d",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves full page up",
+        "Subtext": "CTRL + b",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves full page down",
+        "Subtext": "CTRL + f",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves back to where it was",
+        "Subtext": "CTRL + o",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves forward to where it was",
+        "Subtext": "CTRL + i",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves to top of the page",
+        "Subtext": "gg",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "moves to the bottom of the page",
+        "Subtext": "G",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "delete all line content but keeps line",
+        "Subtext": "s",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "delete entire line",
+        "Subtext": "dd",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "delete entire line",
+        "Subtext": "yy",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "pastes yanked or deleted content",
+        "Subtext": "p",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "pastes yanked or deleted content on top line",
+        "Subtext": "P",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "copy/yank inside x where x can be ( { [ ' \"",
+        "Subtext": "yi + x",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "copy/yank inside x where x can be ( { [ ' \"",
+        "Subtext": "ya + x",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Undo",
+        "Subtext": "u",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Redo",
+        "Subtext": "CTRL + r",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Delete until the end of the word",
+        "Subtext": "dw",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Delete entire word",
+        "Subtext": "diw",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Delete sentence",
+        "Subtext": "dis",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Delete paragraph",
+        "Subtext": "dip",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Delete until next char",
+        "Subtext": "dt + char",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Change until the end of word",
+        "Subtext": "cw",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Change entire word",
+        "Subtext": "ciw",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Repeat last operation",
+        "Subtext": ".",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Bookmark position. Example: ma will save current position under the key a. to go back to this position, `(plus enter)a",
+        "Subtext": "m",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "move to the place where the last edit took place",
+        "Subtext": "`.",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "split commas",
+        "Subtext": "gss",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Surround entire word with char",
+        "Subtext": "saiw + char",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Surround replace (replace char1 wrapper with char2)",
+        "Subtext": "sr + char1 + char 2",
+        "Value": "",
+        "Actions": []
+    }
+]

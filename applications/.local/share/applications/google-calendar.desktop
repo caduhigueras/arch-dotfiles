@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Google Calendar
+Comment=Google Calendar
+Exec=webapp-launcher https://calendar.google.com/
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/google-calendar.png
+StartupNotify=true

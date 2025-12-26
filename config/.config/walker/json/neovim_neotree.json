@@ -1,0 +1,74 @@
+[
+    {
+        "Text": "Add",
+        "Subtext": "a",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Add Dir",
+        "Subtext": "a",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Copy to Clipboard",
+        "Subtext": "y",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Cut",
+        "Subtext": "x",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Delete",
+        "Subtext": "d",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Next Source",
+        "Subtext": ">",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Open Split",
+        "Subtext": "S",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Open Vsplit",
+        "Subtext": "v",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Prev Source",
+        "Subtext": "<",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Rename",
+        "Subtext": "r",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Show File Details",
+        "Subtext": "i",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Show Help",
+        "Subtext": "?",
+        "Value": "",
+        "Actions": []
+    }
+]

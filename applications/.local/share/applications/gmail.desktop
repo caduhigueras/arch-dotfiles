@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Gmail
+Comment=Gmail
+Exec=webapp-launcher https://gmail.com
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/gmail.png
+StartupNotify=true

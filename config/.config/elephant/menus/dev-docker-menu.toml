@@ -1,0 +1,28 @@
+name = "dev_docker_menu"
+name_pretty = "Docker Tools"
+icon = "bookmark"
+fixed_order = true
+
+[[entries]]
+text = "Start Magento Project"
+actions = { "start_magento_project" = "alacritty --class centered_float_window -e start-magento-docker" }
+
+[[entries]]
+text = "Stop Magento Project"
+actions = { "stop_magento_project" = "alacritty --class centered_float_window -e stop-magento-docker" }
+
+[[entries]]
+text = "Run Magento Project"
+actions = { "run_magento_project" = "alacritty --class centered_float_window -e run-magento-docker" }
+
+[[entries]]
+text = "Cleanup Magento Project"
+actions = { "cleanup_magento_project" = "alacritty --class centered_float_window -e cleanup-magento-docker" }
+
+[[entries]]
+text = "Deploy New Magento"
+actions = { "deploy_docker" = "alacritty --class centered_float_window -e launch-mage-docker" }
+
+[[entries]]
+text = "LazyDocker"
+actions = { "open_lazy_docker" = "alacritty --class centered_float_window -e lazydocker" }

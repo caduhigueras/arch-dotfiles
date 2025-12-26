@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Jira
+Comment=Jira
+Exec=webapp-launcher h,tps://onedirect.atlassian.net/jira/software/c/projects/DS1/boards/33
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/jira.png
+StartupNotify=true

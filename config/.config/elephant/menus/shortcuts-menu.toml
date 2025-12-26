@@ -4,8 +4,8 @@ icon = "bookmark"
 fixed_order = true
 
 [[entries]]
-text = "Hyprland Keybindings"
-submenu = "hyprland_keybindings_menu"
+text = "Hyprland Shortcuts"
+actions = { "open_hypr_keybindings" = "walker -m menus:hypr_keybindings --minheight 1 -HN" }
 
 [[entries]]
 text = "Menus"
@@ -17,7 +17,7 @@ submenu = "hyprland_keybindings_menu"
 
 [[entries]]
 text = "Neovim"
-submenu = "hyprland_keybindings_menu"
+submenu = "nvim_shortcuts_summary"
 
 [[entries]]
 text = "Yazi"

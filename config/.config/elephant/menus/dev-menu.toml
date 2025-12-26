@@ -1,0 +1,20 @@
+name = "dev_menu"
+name_pretty = "Dev Tools"
+icon = "bookmark"
+fixed_order = true
+
+[[entries]]
+text = "Apps & WebAPPs"
+submenu = "dev_apps_menu"
+
+[[entries]]
+text = "Docker"
+submenu = "dev_docker_menu"
+
+[[entries]]
+text = "TUIs"
+submenu = "dev_tuis_menu"
+
+[[entries]]
+text = "VPN"
+submenu = "dev_vpn_menu"

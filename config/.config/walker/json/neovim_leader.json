@@ -1,0 +1,61 @@
+[
+    {
+        "Text": "Search in help. (Inside it use <C-/> to show avail. actions)",
+        "Subtext": "LEADER + sh",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search in Keymaps",
+        "Subtext": "LEADER + sk",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search in Files",
+        "Subtext": "LEADER + sg",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search current word",
+        "Subtext": "LEADER + sw",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search with grep",
+        "Subtext": "LEADER + sg",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search in diagnostics",
+        "Subtext": "LEADER + sd",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search in recent files",
+        "Subtext": "LEADER + s.",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Find existing buffers",
+        "Subtext": "LEADER + LEADER",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Search in Neovim files",
+        "Subtext": "LEADER + sn",
+        "Value": "",
+        "Actions": []
+    },
+    {
+        "Text": "Fuzzy find in current buffer",
+        "Subtext": "LEADER + /",
+        "Value": "",
+        "Actions": []
+    }]

@@ -1,0 +1,262 @@
+#!/bin/bash
+export GUM_CHOOSE_PROMPT_FOREGROUND="15"   # white
+export GUM_CHOOSE_FOREGROUND="15"          # items white
+export GUM_CHOOSE_SELECTED_FOREGROUND="#FF9E64" # orange
+export GUM_CHOOSE_CURSOR_FOREGROUND="#FF9E64"   # orange (focused)
+export GUM_SPIN_SPINNER_FOREGROUND="#FF9E64"
+
+if [ "$#" -ne 4 ]; then
+  gum style --border normal --margin "1" --padding "1 2" --border-foreground '#FF9E64' "Hello, there! Ready to install a new Magento Docker instance?"
+
+  INSTALL_NEW_MAGENTO_RAW=$(gum choose --limit 1 --header.foreground 15 --header "New Magento install or from repo?> " New 'From Repo')
+
+  MAGENTO_ADMIN_NAME=""
+  MAGENTO_ADMIN_LAST_NAME=""
+  MAGENTO_ADMIN_PASSWORD=""
+  MAGENTO_ADMIN_EMAIL=""
+  MAGENTO_ADMIN_USER=""
+
+  NEWTWORK_NAME=$(gum input --prompt "Network Name> " --placeholder "Must be unique")
+  MAGENTO_URL=$(gum input --prompt "Magento URL> " --placeholder "No http/https (Ex: magento.test)")
+  MAGENTO_ROOT="$MAGENTO_URL"
+  PHP_DOCKER_IMAGE_VERSION=$(gum input --prompt "PHP version> " --placeholder "(Default: 8.3-fpm)")
+
+  if [[ $PHP_DOCKER_IMAGE_VERSION == "" ]]; then
+    PHP_DOCKER_IMAGE_VERSION="8.3-fpm"
+  fi
+
+  # MAGENTO_ROOT=$(gum input --prompt "Magento Root> " --placeholder "Folder name to install inside /home/arch/app/magento")
+  MAGENTO_DB_NAME=$(gum input --prompt "Magento DB Name> ")
+  MAGENTO_DB_USER=$(gum input --prompt "Magento DB User> " --placeholder "(Default: magento)")
+
+  if [[ $MAGENTO_DB_USER == "" ]]; then
+    MAGENTO_DB_USER="magento"
+  fi
+  
+  MAGENTO_DB_PASSWORD=$(gum input --password --prompt "Magento Database Password> " --placeholder "(Default: password123)")
+
+  if [[ $MAGENTO_DB_PASSWORD == "" ]]; then
+    MAGENTO_DB_PASSWORD="password123"
+  fi
+  
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD=$(gum input --password --prompt "Opensearch Password> " --placeholder "At least 12 chars, with special chars and Uppercase")
+
+  if [[ $INSTALL_NEW_MAGENTO_RAW == "New" ]]; then
+    INSTALL_NEW_MAGENTO=true
+    DB_DUMP_PATH=""
+    REPO_TO_CLONE=""
+    CRYPT_KEY=""
+    GIT_BRANCH=""
+    MAGENTO_AUTH_CONSUMER=$(gum input --prompt "Magento Auth Consumer> " --placeholder "(Public Key) Can be found/created in Magento Marketplace")
+    MAGENTO_AUTH_KEY=$(gum input --prompt "Magento Auth Key> " --password --placeholder "(Private Key) Can be found/created in Magento Marketplace")
+    MAGENTO_VERSION=$(gum input --prompt "Magento version> " --placeholder "(Default: 2.4.7-p3)")
+    NGINX_CONF_FILE=""
+    MAGENTO_ADMIN_NAME=$(gum input --prompt "Magento admin first name> " --placeholder "(Default: admin)")
+    MAGENTO_ADMIN_LAST_NAME=$(gum input --prompt "Magento admin last name> " --placeholder "(Default: admin)")
+    MAGENTO_ADMIN_PASSWORD=$(gum input --password --prompt "Magento Admin Password> " --placeholder "(Default: admin123)")
+    MAGENTO_ADMIN_EMAIL=$(gum input --prompt "Magento admin email> " --placeholder "(Default: admin@admin.com)")
+    MAGENTO_ADMIN_USER=$(gum input --prompt "Magento admin username> " --placeholder "(Default: admin)")
+
+    if [[ $MAGENTO_VERSION == "" ]]; then
+      MAGENTO_VERSION="2.4.7-p3"
+    fi
+
+    if [[ $MAGENTO_ADMIN_NAME == "" ]]; then
+      MAGENTO_ADMIN_NAME="admin"
+    fi
+    
+    if [[ $MAGENTO_ADMIN_LAST_NAME == "" ]]; then
+      MAGENTO_ADMIN_LAST_NAME="admin"
+    fi
+    
+    if [[ $MAGENTO_ADMIN_PASSWORD == "" ]]; then
+      MAGENTO_ADMIN_PASSWORD="admin123"
+    fi
+    
+    if [[ $MAGENTO_ADMIN_EMAIL == "" ]]; then
+      MAGENTO_ADMIN_EMAIL="admin@admin.com"
+    fi
+    
+    if [[ $MAGENTO_ADMIN_USER == "" ]]; then
+      MAGENTO_ADMIN_USER="admin"
+    fi
+
+  else
+    INSTALL_NEW_MAGENTO=false
+    DB_DUMP_PATH=$(gum input --prompt "DB dump path> " --placeholder "Location of the db dump (Ex: /home/arch/db/magento.sql)")
+    REPO_TO_CLONE=$(gum input --prompt "Repo SSH url> " --placeholder "(Ex: git@bitbucket.org:example/example.git)")
+    CRYPT_KEY=$(gum input --prompt "Crypt Key> " --placeholder "The crypt key of your env file.")
+    GIT_BRANCH=$(gum input --prompt "Git branch> " --placeholder "(Ex: master)")
+    MAGENTO_AUTH_CONSUMER=""
+    MAGENTO_AUTH_KEY=""
+    MAGENTO_VERSION=""
+    NGINX_CONF_FILE=$(gum input --prompt "Nginx config file> " --placeholder "(Ex: nginx.conf.sample)")
+  fi
+
+
+  CONFIGURE_BLACKFIRE=$(gum choose --limit 1 --header.foreground 15 --header "Do you want to setup Blackfire credentials?> " Yes No)
+  if [[ $CONFIGURE_BLACKFIRE == "Yes" ]]; then
+    BLACKFIRE_SERVER_ID=$(gum input --prompt "Blackfire Server ID> ")
+    BLACKFIRE_SERVER_TOKEN=$(gum input --prompt "Blackfire Server Token> ")
+    BLACKFIRE_CLIENT_ID=$(gum input --prompt "Blackfire Client ID> ")
+    BLACKFIRE_CLIENT_TOKEN=$(gum input --prompt "Blackfire Client Token> ")
+  else
+    BLACKFIRE_SERVER_ID=""
+    BLACKFIRE_SERVER_TOKEN=""
+    BLACKFIRE_CLIENT_ID=""
+    BLACKFIRE_CLIENT_TOKEN=""
+  fi
+
+  # REPO_ROOT=../www TODO: always hardcode
+
+  #********* Magento Settings **********/
+  #Be careful. When installing new magento you must use a unique DB name#
+
+
+  # APP_NAME=$(gum input --prompt "Name> " --placeholder "My TUI")
+  # APP_EXEC=$(gum input --prompt "Launch Command> " --placeholder "lazydocker or bash -c 'dust; read -n 1 -s'")
+  # WINDOW_STYLE=$(gum choose --header "Window style" float tile)
+  # ICON_URL=$(gum input --prompt "Icon URL> " --placeholder "See https://dashboardicons.com (must use PNG)")
+else
+  INSTALL_NEW_MAGENTO_RAW="$1"
+  INSTALL_NEW_MAGENTO="$2"
+  DB_DUMP_PATH="$3"
+  REPO_TO_CLONE="$4"
+  CRYPT_KEY="$5"
+  GIT_BRANCH="$6"
+  MAGENTO_AUTH_CONSUMER="$7"
+  MAGENTO_AUTH_KEY="$8"
+  MAGENTO_VERSION="$9"
+  NEWTWORK_NAME="$10"
+  PHP_DOCKER_IMAGE_VERSION="$11"
+  MAGENTO_ROOT="$12"
+  MAGENTO_DB_NAME="$13"
+  MAGENTO_DB_USER="$14"
+  MAGENTO_DB_PASSWORD="$15"
+  MAGENTO_URL="$16"
+  MAGENTO_ADMIN_NAME="$17"
+  MAGENTO_ADMIN_LAST_NAME="$18"
+  MAGENTO_ADMIN_PASSWORD="$19"
+  MAGENTO_ADMIN_EMAIL="$20"
+  MAGENTO_ADMIN_USER="$21"
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD="$22"
+  CONFIGURE_BLACKFIRE="$23"
+  NGINX_CONF_FILE="$24"
+fi
+
+MAGENTO_ROOT="/home/arch/app/magento/$MAGENTO_ROOT"
+
+# P="${MAGENTO_ROOT%/}"
+# DEST_FOLDER="${P##*/}"
+# BASE_DIR="${P%/}"
+# BASE_DIR="${BASE_DIR%/*}"
+
+gum spin -s line --title "Cloning the project into: $MAGENTO_ROOT/" -- bash -c "mkdir -p $MAGENTO_ROOT && git clone https://github.com/caduhigueras/docker-magento-setup.git $MAGENTO_ROOT/docker"
+
+REPO_ROOT="../www"
+export BASE_DIR \
+  DB_DUMP_PATH \
+  DEST_FOLDER \
+  CONFIGURE_BLACKFIRE \
+  CRYPT_KEY \
+  GIT_BRANCH \
+  INSTALL_NEW_MAGENTO \
+  MAGENTO_ADMIN_EMAIL \
+  MAGENTO_ADMIN_LAST_NAME \
+  MAGENTO_ADMIN_NAME \
+  MAGENTO_ADMIN_PASSWORD \
+  MAGENTO_ADMIN_USER \
+  MAGENTO_AUTH_CONSUMER \
+  MAGENTO_AUTH_KEY \
+  MAGENTO_DB_NAME \
+  MAGENTO_DB_USER \
+  MAGENTO_DB_PASSWORD \
+  MAGENTO_ROOT \
+  MAGENTO_VERSION \
+  MAGENTO_URL \
+  NEWTWORK_NAME \
+  NGINX_CONF_FILE \
+  OPENSEARCH_INITIAL_ADMIN_PASSWORD \
+  PHP_DOCKER_IMAGE_VERSION \
+  REPO_ROOT \
+  REPO_TO_CLONE \
+  USER
+
+gum spin -s line --show-output --title "Preparing the .env file" -- bash -c '
+cd "$MAGENTO_ROOT/docker"
+cp .sample/.env.sample ./.env
+sed -i -E "s|^(BASE_DIR=).*|\\1${BASE_DIR//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(DB_DUMP_PATH=).*|\\1${DB_DUMP_PATH//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(DEST_FOLDER=).*|\\1${DEST_FOLDER//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(CONFIGURE_BLACKFIRE=).*|\\1${CONFIGURE_BLACKFIRE//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(CRYPT_KEY=).*|\\1${CRYPT_KEY//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(GIT_BRANCH=).*|\\1${GIT_BRANCH//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(INSTALL_NEW_MAGENTO=).*|\\1${INSTALL_NEW_MAGENTO//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_ADMIN_EMAIL=).*|\\1${MAGENTO_ADMIN_EMAIL//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_ADMIN_LAST_NAME=).*|\\1${MAGENTO_ADMIN_LAST_NAME//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_ADMIN_NAME=).*|\\1${MAGENTO_ADMIN_NAME//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_ADMIN_PASSWORD=).*|\\1${MAGENTO_ADMIN_PASSWORD//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_ADMIN_USER=).*|\\1${MAGENTO_ADMIN_USER//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_AUTH_CONSUMER=).*|\\1${MAGENTO_AUTH_CONSUMER//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_AUTH_KEY=).*|\\1${MAGENTO_AUTH_KEY//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_DB_NAME=).*|\\1${MAGENTO_DB_NAME//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_DB_USER=).*|\\1${MAGENTO_DB_USER//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_DB_PASSWORD=).*|\\1${MAGENTO_DB_PASSWORD//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_ROOT=).*|\\1${MAGENTO_ROOT//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_VERSION=).*|\\1${MAGENTO_VERSION//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MAGENTO_URL=).*|\\1${MAGENTO_URL//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(NEWTWORK_NAME=).*|\\1${NEWTWORK_NAME//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(NGINX_CONF_FILE=).*|\\1${NGINX_CONF_FILE//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(OPENSEARCH_INITIAL_ADMIN_PASSWORD=).*|\\1${OPENSEARCH_INITIAL_ADMIN_PASSWORD//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(PHP_DOCKER_IMAGE_VERSION=).*|\\1${PHP_DOCKER_IMAGE_VERSION//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(REPO_ROOT=).*|\\1${REPO_ROOT//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(REPO_TO_CLONE=).*|\\1${REPO_TO_CLONE//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(SYSTEM_USER_NAME=).*|\\1${USER//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(XDEBUG_SERVER_NAME=).*|\\1${MAGENTO_URL//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MYSQL_DATABASE=).*|\\1${MAGENTO_DB_NAME//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MYSQL_USER=).*|\\1${MAGENTO_DB_USER//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MYSQL_PASSWORD=).*|\\1${MAGENTO_DB_PASSWORD//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+sed -i -E "s|^(MYSQL_ROOT_PASSWORD=).*|\\1${MAGENTO_DB_PASSWORD//&/\\&}|" "$MAGENTO_ROOT/docker/.env"
+'
+
+LOG_FILE="/tmp/deploy_magento_new.log"
+INSTALLED="false"
+
+if [[ $INSTALL_NEW_MAGENTO_RAW == "New" ]]; then
+  gum spin -s line --title "Preparing Docker Environment" -- bash -c '
+    {
+      cd "$MAGENTO_ROOT/docker"
+      make setup
+      docker compose up -d
+    } 2>&1 | tee -a "'"$LOG_FILE"'"
+  '
+
+  gum spin -s line --title "Installing Magento" -- bash -c '
+    {
+      cd "$MAGENTO_ROOT/docker"
+      until mariadb --ssl=0 -h 0.0.0.0 -u root -p"$MAGENTO_DB_PASSWORD" -e "SELECT 1" >/dev/null 2>&1; do
+        sleep 1
+      done
+      make install_magento
+      echo "===== $(date -Is) Done ====="
+      INSTALLED="true"
+      echo "To add the new website to your hosts files, RUN:"
+      echo "cd $MAGENTO_ROOT/docker"
+      echo "sudo make update_hosts"
+    } 2>&1 | tee -a "'"$LOG_FILE"'"
+  '
+else
+  gum spin -s line --show-output --title "Installing the project" -- bash -c '
+  cd "$MAGENTO_ROOT/docker"
+  make setup
+  docker compose up -d
+  make prepare_existing_magento
+  '
+fi
+
+gum style --margin "1 0" --bold "Log saved to: $LOG_FILE"
+tail -n 200 -f "$LOG_FILE"
+
+# if [[ $INSTALLED == "false" ]]; then
+#   exit 1
+# fi

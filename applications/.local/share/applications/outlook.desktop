@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Outlook
+Comment=Outlook
+Exec=webapp-launcher https://outlook.office.com/mail
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/outlook.png
+StartupNotify=true

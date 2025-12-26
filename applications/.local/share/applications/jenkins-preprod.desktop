@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Jenkins (Preprod)
+Comment=Jenkins (Preprod)
+Exec=webapp-launcher https://add-private-ip-here
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/jenkins.png
+StartupNotify=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Teams
+Comment=Teams
+Exec=webapp-launcher https://teams.microsoft.com/v2/
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/teams.png
+StartupNotify=true

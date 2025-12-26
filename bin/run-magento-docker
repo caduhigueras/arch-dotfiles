@@ -1,0 +1,19 @@
+#!/bin/bash
+
+fzf_args=(
+  --preview 'echo "Bring project {1} up with docker compose up -d"'
+  --preview-label='F11: maximize'
+  --preview-label-pos='bottom'
+  --preview-window 'down:65%:wrap'
+  --color 'pointer:green,marker:green'
+)
+
+magento_project=$(find ~/app/magento/ -depth -maxdepth 1 -type d | xargs basename $1 | fzf "${fzf_args[@]}")
+
+if [[ -n "$magento_project" ]]; then
+  echo "$magento_project" | tr '\n' ' ' 
+  cd "/home/arch/app/magento/$magento_project/docker"
+  docker compose up -d
+  show-done
+fi
+

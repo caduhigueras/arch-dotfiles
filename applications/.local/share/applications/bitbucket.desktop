@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Bitbucket
+Comment=Bitbucket
+Exec=webapp-launcher https://bitbucket.org/onedirect/workspace/overview/
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/bitbucket.png
+StartupNotify=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Excel
+Comment=Excel
+Exec=webapp-launcher http://docs.google.com/spreadsheets/
+Terminal=false
+Type=Application
+Icon=/home/arch/.local/share/applications/icons/excel.png
+StartupNotify=true
