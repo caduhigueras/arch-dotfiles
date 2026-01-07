@@ -1,10 +1,9 @@
 name = "shortcuts_menu"
 name_pretty = "Shortcuts Menu"
-icon = "bookmark"
 fixed_order = true
 
 [[entries]]
-text = "Hyprland Shortcuts"
+text = "Hyprland Keybindings"
 actions = { "open_hypr_keybindings" = "walker -m menus:hypr_keybindings --minheight 1 -HN" }
 
 [[entries]]
@@ -12,12 +11,8 @@ text = "Menus"
 submenu = "hyprland_keybindings_menu"
 
 [[entries]]
-text = "APPs and WebAPPs"
-submenu = "hyprland_keybindings_menu"
-
-[[entries]]
 text = "Neovim"
-submenu = "nvim_shortcuts_summary"
+submenu = "nvim_shortcuts_menu"
 
 [[entries]]
 text = "Yazi"

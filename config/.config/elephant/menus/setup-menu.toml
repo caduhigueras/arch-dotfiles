@@ -1,6 +1,5 @@
 name = "setup_menu"
 name_pretty = "Setup Menu"
-icon = "bookmark"
 
 [[entries]]
 text = "Install WebAPP"

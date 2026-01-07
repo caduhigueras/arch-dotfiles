@@ -1,19 +1,23 @@
 name = "power_menu"
 name_pretty = "Power Menu"
-icon = "bookmark"
-
-[[entries]]
-text = "Lock"
-actions = { "lock_screen" = "hyprlock" }
-
-[[entries]]
-text = "Suspend"
-actions = { "suspend" = "systemctl suspend" }
+fixed_order = true
 
 [[entries]]
 text = "Restart"
 actions = { "reboot" = "systemctl reboot" }
+icon = "/home/arch/.local/share/applications/icons/arrows-rotate-solid-full.svg"
 
 [[entries]]
 text = "Shutdown"
 actions = { "shutdown" = "systemctl poweroff" }
+icon = "/home/arch/.local/share/applications/icons/power-off-solid-full.svg"
+
+[[entries]]
+text = "Lock"
+actions = { "lock_screen" = "hyprlock" }
+icon = "/home/arch/.local/share/applications/icons/lock-solid-full.svg"
+
+[[entries]]
+text = "Suspend"
+actions = { "suspend" = "systemctl suspend" }
+icon = "/home/arch/.local/share/applications/icons/moon-regular-full.svg"

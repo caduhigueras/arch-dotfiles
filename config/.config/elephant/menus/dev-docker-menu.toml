@@ -1,28 +1,33 @@
 name = "dev_docker_menu"
 name_pretty = "Docker Tools"
-icon = "bookmark"
 fixed_order = true
 
 [[entries]]
 text = "Start Magento Project"
 actions = { "start_magento_project" = "alacritty --class centered_float_window -e start-magento-docker" }
+icon = "/home/arch/.local/share/applications/icons/play-circle-1.svg"
 
 [[entries]]
 text = "Stop Magento Project"
 actions = { "stop_magento_project" = "alacritty --class centered_float_window -e stop-magento-docker" }
+icon = "/home/arch/.local/share/applications/icons/stop-circle.svg"
 
 [[entries]]
 text = "Run Magento Project"
 actions = { "run_magento_project" = "alacritty --class centered_float_window -e run-magento-docker" }
+icon = "/home/arch/.local/share/applications/icons/arrow-up-04.svg"
 
 [[entries]]
 text = "Cleanup Magento Project"
 actions = { "cleanup_magento_project" = "alacritty --class centered_float_window -e cleanup-magento-docker" }
+icon = "/home/arch/.local/share/applications/icons/arrow-down-04.svg"
 
 [[entries]]
 text = "Deploy New Magento"
 actions = { "deploy_docker" = "alacritty --class centered_float_window -e launch-mage-docker" }
+icon = "/home/arch/.local/share/applications/icons/add-circle.svg"
 
 [[entries]]
 text = "LazyDocker"
 actions = { "open_lazy_docker" = "alacritty --class centered_float_window -e lazydocker" }
+icon = "/home/arch/.local/share/applications/icons/code-circle.svg"

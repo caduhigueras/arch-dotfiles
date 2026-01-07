@@ -1,9 +1,8 @@
-@define-color selected-text #7dcfff;
-@define-color text #cfc9c2;
-@define-color base #1a1b26;
-@define-color border #33ccff;
-@define-color foreground #cfc9c2;
-@define-color background #1a1b26;
+@define-color window_bg_color rgba(26, 27, 38, 0.95);
+@define-color accent_bg_color #202124;
+@define-color theme_fg_color #FF9E64;
+@define-color error_bg_color #CFC9C2;
+@define-color error_fg_color #F7768E;
 
 * {
     font-family: "JetBrainsMonoNL Nerd Font";
@@ -15,8 +14,8 @@ popover {
 }
 
 .box-wrapper {
-    background: rgba(26, 27, 38, 0.95);
-    border: 2px solid #FF9E64;
+    background: @window_bg_color;
+    border: 2px solid @theme_fg_color;
     border-radius: 0px;
     padding: 20px 30px;
 }
@@ -26,7 +25,7 @@ popover {
     box-shadow: none;
     font-size: 20px;
     padding: 10px 15px;
-    background: #202124;
+    background: @accent_bg_color;
 }
 
 .search-container {
@@ -37,6 +36,13 @@ popover {
     padding: 0;
 }
 
-.custom-item-box {
-    padding: 200px;
+/* .shortcuts-item-box {} */
+
+.shortcuts-item-subtext {
+    background: @window_bg_color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 5px;
 }

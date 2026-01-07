@@ -1,30 +1,40 @@
 name = "kr_menu"
 name_pretty = "KodingRocks Menu"
-icon = "bookmark"
 fixed_order = true
 
 [[entries]]
 text = "Dev"
 submenu = "dev_menu"
+icon = "/home/arch/.local/share/applications/icons/dev.svg"
+
+[[entries]]
+text = "Configs"
+submenu = "config_files_menu"
+icon = "/home/arch/.local/share/applications/icons/config.svg"
 
 [[entries]]
 text = "System"
 submenu = "system_menu"
+icon = "/home/arch/.local/share/applications/icons/system.svg"
 
 [[entries]]
 text = "Setup"
 submenu = "setup_menu"
+icon = "/home/arch/.local/share/applications/icons/setup.svg"
 
 [[entries]]
 text = "Power Menu"
 submenu = "power_menu"
+icon = "/home/arch/.local/share/applications/icons/power.svg"
 
 [[entries]]
 text = "Shortcuts"
 submenu = "shortcuts_menu"
+icon = "/home/arch/.local/share/applications/icons/shortcut.svg"
 
 [[entries]]
 text = "Screenshots"
 submenu = "screenshots_menu"
+icon = "/home/arch/.local/share/applications/icons/screenshot.svg"
 
 # TODO: themes

@@ -1,10 +1,11 @@
 theme = "tokyo-night"
+force_keyboard_focus = false    # forces keyboard forcus to stay in Walker
+close_when_open = true          # close walker when invoking while already opened
+click_to_close = true
+# debug = true
 
-[builtins.applications]
-show_sub_when_single = false
-show_icon_when_single = false
-show_generic = false
-
-[builtins.applications.actions]
-enabled = true
-hide_category = true
+[providers.actions]
+"menus:config_files_menu" = [
+  { action = "open", label = "Open", bind = "Return", default = true },
+  { action = "open_float", label = "Open Float", bind = "ctrl Return" },
+]

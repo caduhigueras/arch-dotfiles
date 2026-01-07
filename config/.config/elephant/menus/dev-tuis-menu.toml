@@ -1,6 +1,5 @@
 name = "dev_tuis_menu"
 name_pretty = "Dev TUIs"
-icon = "bookmark"
 fixed_order = false
 
 [[entries]]

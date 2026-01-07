@@ -1,21 +1,22 @@
-name = "nvim_shortcuts_summary"
-name_pretty = "Neovim Shortcuts"
-icon = "bookmark"
-fixed_order = true
+name = "nvim_shortcuts_menu"
+name_pretty = "Neovim - Command Mode"
 
 [[entries]]
 text = "Command"
 submenu = "nvim_shortcuts_command"
 
+[[entries]]
 text = "Leader"
 submenu = "nvim_shortcuts_leader"
 
-text = "Normal"
-submenu = "nvim_shortcuts_normal"
-
-text = "LSP"
+[[entries]]
+text = "Lsp"
 submenu = "nvim_shortcuts_lsp"
 
+[[entries]]
 text = "Neotree"
 submenu = "nvim_shortcuts_neotree"
 
+[[entries]]
+text = "Normal"
+submenu = "nvim_shortcuts_normal"
