@@ -46,8 +46,8 @@
         "network",
         "custom/bluetooth",
         "custom/power"
-        // "memory",
         // "cpu",
+        // "memory",
         // "idle_inhibitor",
         // "mpd",
         // "tray",
@@ -59,6 +59,11 @@
         // "battery",
         // "battery#bat2",
     ],
+    // "cpu": {
+    //     "interval": 10,
+    //     "format": " {}%",
+    //     "max-length": 10
+    // },
     "custom/rec": {
         "exec": "waybar-rec",
         "return-type": "json",
@@ -116,7 +121,7 @@
         "format": " ",
         "tooltip": true,
         "tooltip-format": "Open Power Menu",
-        "on-click": "walker -m menus:power_menu"
+        "on-click": "walker -m menus:power_menu --minheight 1 -HNn"
     },
     "keyboard-state": {
         "numlock": true,

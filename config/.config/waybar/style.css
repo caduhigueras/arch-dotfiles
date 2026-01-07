@@ -16,6 +16,19 @@
 @define-color tn-yellow #e0af68;
 @define-color tn-green #9ece6a;
 
+@define-color theme-text-primary #c0caf5;
+@define-color theme-dark #1A1B26;
+@define-color theme-green #9ECE6A;
+@define-color theme-orange #FF9E64;
+@define-color theme-red #F7768E;
+@define-color theme-blue #7AA2F7;
+@define-color theme-yellow #E0AF68;
+@define-color theme-light-accent #BB9AF7;
+@define-color theme-secondary-accent #73DACB;
+@define-color theme-terciary-accent #2AC3DE;
+@define-color theme-quartenary-accent #BB9AF7;
+
+
 * {
     padding: 0;
 }
@@ -30,7 +43,7 @@ window#waybar {
 }
 
 .modules-center {
-    padding: 7px 0;
+    padding: 0;
 }
 
 /*
@@ -82,26 +95,25 @@ window#waybar {
     color: transparent;
 }
 
+#window {
+    background-color: @theme-dark;
+    font-size: 14px;
+    border-bottom: 1px solid @theme-yellow;
+    padding: 8px 15px;
+}
+
 /*
  * Clock
  */
 #clock {
     color: @primary;
-    background: @secondaryBg;
-    padding: 0px 15px;
-    border-radius: 10px;
+    background: @theme-dark;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-bottom: 1px solid @theme-light-accent;
 }
 
-#clock .tt {
-    /* background-color: #1e1e2e; */
-    /* border: 1px solid #6c6c80; */
-    /* border-radius: 6px; */
-    border-radius: 0;
-    padding: 25px;
-    /* color: #cdd6f4; */
-    font-size: 12px;
-    /* font-family: "Fira Code", monospace; */
-}
+/* #clock .tt {} */
 
 /*
  * System tray
@@ -149,7 +161,10 @@ window#waybar {
  * CPU / Memory
  */
 #cpu {
-    color: @primary;
+    color: #FF9E64;
+    background-color: black;
+    padding: 5px 10px;
+    font-size: 14px;
 }
 
 #memory {
@@ -161,29 +176,31 @@ window#waybar {
  * Sound
  */
 #pulseaudio {
-    color: @primary;
-    padding-left: 20px;
+    padding: 8px 15px 8px 35px;
+    background-color: @theme-dark;
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: 14px center;
+    color: @theme-text-primary;
+    border-bottom: 1px solid @theme-secondary-accent;
 }
 
 #pulseaudio.normal {
     background: url("./resources/img/volume-low.svg");
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: 14px center;
 }
 
 #pulseaudio.high {
     background: url("./resources/img/volume-high.svg");
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: 14px center;
 }
 
 #pulseaudio.muted,
 #pulseaudio.low {
     background: url("./resources/img/volume-muted.svg");
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: 14px center;
 }
 
 /**
@@ -195,50 +212,65 @@ window#waybar {
 }
 
 #custom-cpu {
-    padding-left: 20px;
-    background: url("./resources/img/cpu-3.svg");
+    padding: 8px 15px 8px 35px;
+    background-color: @theme-dark;
+    background-image: url("./resources/img/cpu.svg");
     background-repeat: no-repeat;
-    background-position: left center;
+    background-position: 14px center;
+    border-bottom: 1px solid @theme-green;
+    font-size: 14px;
+}
+
+#custom-cpu.low {
+    color: @theme-text-primary;
 }
 
 #custom-cpu.normal {
-    color: #9ECE6A;
+    color: @theme-green;
 }
 
 #custom-cpu.high {
-    color: #FF9E64;
+    color: @theme-orange;
 }
 
 #custom-cpu.limit {
-    color: #F7768E;
+    color: @theme-red;
 }
 
 #custom-memory {
-    padding-left: 20px;
-    background: url("./resources/img/memory.svg");
+    background-color: @theme-dark;
+    padding: 8px 15px 8px 35px;
+    background-image: url("./resources/img/ram.svg");
     background-repeat: no-repeat;
-    background-position: left center;
-    margin-right: 10px;
+    background-position: 14px center;
+    font-size: 14px;
+    border-bottom: 1px solid @theme-orange;
 }
 
 #custom-memory.normal {
-    color: #9ECE6A;
+    color: @theme-text-primary;
+}
+
+#custom-memory.normal {
+    color: @theme-green;
 }
 
 #custom-memory.high {
-    color: #FF9E64;
+    color: @theme-orange;
 }
 
 #custom-memory.limit {
-    color: #F7768E;
+    color: @theme-red;
 }
 
 #custom-mic.low {
-    padding-left: 20px;
-    background: url("./resources/img/mic-disconnected.svg");
+    padding: 8px 15px 8px 35px;
+    background-position: 14px center;
+    font-size: 14px;
+    border-bottom: 1px solid @theme-terciary-accent;
+    background-color: @theme-dark;
+    background-image: url("./resources/img/mic-disconnected.svg");
     background-repeat: no-repeat;
-    background-position: left center;
-    margin-right: 10px;
 }
 
 #custom-mic.normal {
@@ -250,12 +282,13 @@ window#waybar {
 }
 
 #network {
-    padding-left: 10px;
+    padding: 8px 0px 8px 20px;
+    background-position: 14px center;
+    font-size: 14px;
+    border-bottom: 1px solid @theme-terciary-accent;
+    background-color: @theme-dark;
     background: url("./resources/img/wifi-disconnected.svg");
     background-repeat: no-repeat;
-    background-position: center center;
-    margin-right: 0;
-    padding-right: 0;
 }
 
 #network.disabled {
@@ -271,7 +304,7 @@ window#waybar {
 }
 
 #network.ethernet {
-    background: url("./resources/img/internet.svg");
+    background: url("./resources/img/link.svg");
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -283,9 +316,12 @@ window#waybar {
 }
 
 #custom-bluetooth {
-    padding-left: 10px;
+    padding: 8px 0px 8px 20px;
+    background-position: 14px center;
+    font-size: 14px;
+    border-bottom: 1px solid @theme-blue;
+    background-color: @theme-dark;
     background-repeat: no-repeat;
-    background-position: center center;
 }
 
 #custom-bluetooth.off {
@@ -307,11 +343,14 @@ window#waybar {
 }
 
 #custom-power {
-    background: url("./resources/img/gshutdown.svg");
-    background-repeat: no-repeat;
+    padding: 8px 0px 8px 20px;
     background-position: center center;
-    padding-left: 10px;
-    margin-right: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid @theme-red;
+    background-color: @theme-dark;
+    background-image: url("./resources/img/power.svg");
+    background-repeat: no-repeat;
+    margin-right: 5px;
 }
 
 tooltip.background {
