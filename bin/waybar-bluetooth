@@ -3,13 +3,13 @@ set -euo pipefail
 
 # 1) Detect if bluetooth is available/powered
 if ! systemctl -q is-active bluetooth.service; then
-  printf '{"text":"BT off","tooltip":"not found / not available","class":"off"}\n'
+  printf '{"text":"\ue90f","tooltip":"not found / not available","class":"off"}\n'
   exit 0
 fi
 
 # bluetoothctl show exits non-zero if no controller
 if ! show_out=$(bluetoothctl show 2>/dev/null); then
-  printf '{"text":"BT off","tooltip":"not found / not available","class":"off"}\n'
+  printf '{"text":"\ue90f","tooltip":"not found / not available","class":"off"}\n'
   exit 0
 fi
 
@@ -22,7 +22,7 @@ fi
 # 2) List connected devices
 connected_lines=$(bluetoothctl devices Connected 2>/dev/null || true)
 if [[ -z "$connected_lines" ]]; then
-  printf '{"text":"BT","tooltip":"disconnected","class":"disconnected"}\n'
+  printf '{"text":"\ue90e","tooltip":"disconnected","class":"disconnected"}\n'
   exit 0
 fi
 
@@ -32,5 +32,5 @@ count=$(wc -l <<<"$devices" | tr -d ' ')
 
 tooltip=$(printf "%s\n" "$devices" | sed '/^$/d')
 
-printf '{"text":"BT %s","tooltip":"%s","class":"connected"}\n' "$count" "$tooltip"
+printf '{"text":"\ue90e %s","tooltip":"%s","class":"connected"}\n' "$count" "$tooltip"
 

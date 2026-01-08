@@ -1,23 +1,11 @@
 /*
  * Tokyo Night Color Palette
  */
-@define-color mainBg rgba(26, 27, 38, 0.5);
-@define-color secondaryBg rgba(26, 27, 38, 0.3);
-@define-color primary #A9B1D6;
-
-@define-color tn-bg #1A1B26;
-@define-color tn-bg-alt #1f2335;
-@define-color tn-fg #c0caf5;
-
-@define-color tn-blue #7aa2f7;
-@define-color tn-cyan #7dcfff;
-@define-color tn-red #f7768e;
-@define-color tn-orange #ff9e64;
-@define-color tn-yellow #e0af68;
-@define-color tn-green #9ece6a;
-
-@define-color theme-text-primary #c0caf5;
+@define-color theme-main-bg rgba(33, 34, 42, 0.8);
+@define-color theme-alt-bg rgba(17, 17, 17, 0.6);
+@define-color theme-text-primary #A9B1D6;
 @define-color theme-dark #1A1B26;
+@define-color theme-dark-shade #414868;
 @define-color theme-green #9ECE6A;
 @define-color theme-orange #FF9E64;
 @define-color theme-red #F7768E;
@@ -28,329 +16,199 @@
 @define-color theme-terciary-accent #2AC3DE;
 @define-color theme-quartenary-accent #BB9AF7;
 
-
 * {
-    padding: 0;
+    font-family: "kr-icons", "JetBrainsMono Nerd Font", monospace;
+    /* padding: 0; */
 }
 
-/* Waybar background */
 window#waybar {
-    background: @mainBg;
-    font-family: "JetBrainsMono Nerd Font", monospace;
-    font-size: 12px;
-    color: @tn-fg;
-    padding: 0;
+    background: @theme-alt-bg;
+    font-size: 14px;
+    color: @theme-text-primary;
 }
 
-.modules-center {
-    padding: 0;
+.modules-left, .modules-center, .modules-right {
+    padding: 8px 10px;
+}
+
+#custom-kr-menu {
+    background: @theme-main-bg;
+    padding: 0 8px;
+    color: @theme-blue;
 }
 
 /*
  * Virtual Desktops (cffi/virtual-desktops as #waybar-vd)
  */
 #waybar-vd {
-    padding: 0px 5px 0 0;
-    background: transparent;
-    margin-left: 10px;
+    background: @theme-main-bg;
+    padding: 6px 10px;
+    /* border-radius: 0px; */
 }
 
+/* Minimal button styling - clean and simple */
 #waybar-vd button {
-    color: #414868;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0 2px;
+    margin: 0 1px;
+    border-radius: 0;
+    color: #666;
+    font-size: 20px;
+    min-width: 0;
+}
+
+/* Focused Virtual Desktop - minimal highlight with underline */
+#waybar-vd button.vdesk-focused {
+    color: @theme-red;
+    font-weight: bold;
+    background: none;
+    /* border-bottom: 1px solid #fff; */
+}
+
+/* Unfocused Virtual Desktop - subtle gray */
+#waybar-vd button.vdesk-unfocused {
+    color: @theme-dark-shade;
     font-weight: normal;
-    font-size: 0px;
-    font-family: inherit;
+}
+
+/* Minimal hover effects */
+#waybar-vd button.hover.vdesk-focused {
+    color: @theme-text-primary;
+}
+
+#waybar-vd button.hover.vdesk-unfocused {
+    color: @theme-text-primary;
+}
+
+/* Hidden Virtual Desktops */
+#waybar-vd button.hidden {
+    opacity: 0;
     padding: 0;
     margin: 0;
-    transition: none;
-    color: transparent;
-    background-image: url("./resources/img/inactive-vdesk.svg");
-    background-repeat: no-repeat;
-    background-size: 7px 7px;
-    background-position: center center;
-    min-width: 15px;
-}
-
-#waybar-vd button.hover,
-#waybar-vd button.vdesk-unfocused,
-#waybar-vd button:hover {
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    color: transparent;
-}
-
-#waybar-vd button.vdesk-focused {
-    color: transparent;
-    padding: 0px 5px;
-    background-image: url("./resources/img/active-vdesk.svg");
-    background-repeat: no-repeat;
-    background-size: 24px 7px;
-    background-position: center center;
-}
-
-#waybar-vd button.vdesk-focused.hover {
-    border: none;
-    box-shadow: none;
-    color: transparent;
 }
 
 #window {
-    background-color: @theme-dark;
-    font-size: 14px;
-    border-bottom: 1px solid @theme-yellow;
-    padding: 8px 15px;
+    background: @theme-main-bg;
+    padding: 6px 10px;
+    /* border-radius: 10px; */
 }
 
 /*
  * Clock
  */
 #clock {
-    color: @primary;
-    background: @theme-dark;
-    padding: 8px 15px;
-    font-size: 14px;
-    border-bottom: 1px solid @theme-light-accent;
-}
-
-/* #clock .tt {} */
-
-/*
- * System tray
- */
-#tray {
-    padding: 0 8px;
-}
-
-#tray>.passive {
-    opacity: 0.5;
-}
-
-#tray>.active {
-    opacity: 1.0;
-}
-
-#tray>.needs-attention {
-    background: @tn-red;
-}
-
-
-/*
- * Battery
- */
-#battery.charging {
-    color: @tn-green;
-}
-
-#battery.warning {
-    color: @tn-orange;
-}
-
-#battery.critical {
-    color: @tn-red;
-}
-
-/*
- * Backlight
- */
-#backlight {
-    color: @tn-yellow;
+    color: @theme-text-primary;
+    background: @theme-main-bg;
+    padding: 6px 10px;
+    /* border-radius: 10px; */
 }
 
 /*
  * CPU / Memory
  */
 #cpu {
-    color: #FF9E64;
-    background-color: black;
-    padding: 5px 10px;
-    font-size: 14px;
+    color: @theme-text-primary;
+    background: @theme-main-bg;
+    padding: 6px 10px 6px 15px;
+    /* border-radius: 10px 0 0 10px; */
 }
 
 #memory {
-    color: @primary;
-    padding-right: 15px;
+    color: @theme-text-primary;
+    background: @theme-main-bg;
+    /* border-radius: 0 10px 10px 0; */
+    padding: 6px 15px 6px 0;
 }
 
 /*
  * Sound
  */
 #pulseaudio {
-    padding: 8px 15px 8px 35px;
-    background-color: @theme-dark;
-    background-repeat: no-repeat;
-    background-position: 14px center;
     color: @theme-text-primary;
-    border-bottom: 1px solid @theme-secondary-accent;
+    background: @theme-main-bg;
+    padding: 6px 10px 6px 15px;
+    /* border-radius: 10px 0 0 10px; */
 }
 
-#pulseaudio.normal {
-    background: url("./resources/img/volume-low.svg");
-    background-repeat: no-repeat;
-    background-position: 14px center;
+#custom-mic {
+    color: @theme-text-primary;
+    background: @theme-main-bg;
+    /* border-radius: 0 10px 10px 0; */
+    padding: 6px 15px 6px 0;
+
 }
 
-#pulseaudio.high {
-    background: url("./resources/img/volume-high.svg");
-    background-repeat: no-repeat;
-    background-position: 14px center;
+#custom-sep {
+    color: @theme-dark-shade;
+    padding: 0 5px;
+    font-size: 7px;
 }
 
-#pulseaudio.muted,
-#pulseaudio.low {
-    background: url("./resources/img/volume-muted.svg");
-    background-repeat: no-repeat;
-    background-position: 14px center;
-}
-
-/**
-* custom recording
-*/
 #custom-rec.recording {
-    color: #ff3333;
-    font-weight: 700;
-}
-
-#custom-cpu {
-    padding: 8px 15px 8px 35px;
-    background-color: @theme-dark;
-    background-image: url("./resources/img/cpu.svg");
-    background-repeat: no-repeat;
-    background-position: 14px center;
-    border-bottom: 1px solid @theme-green;
-    font-size: 14px;
-}
-
-#custom-cpu.low {
-    color: @theme-text-primary;
-}
-
-#custom-cpu.normal {
-    color: @theme-green;
-}
-
-#custom-cpu.high {
-    color: @theme-orange;
-}
-
-#custom-cpu.limit {
     color: @theme-red;
-}
-
-#custom-memory {
-    background-color: @theme-dark;
-    padding: 8px 15px 8px 35px;
-    background-image: url("./resources/img/ram.svg");
-    background-repeat: no-repeat;
-    background-position: 14px center;
-    font-size: 14px;
-    border-bottom: 1px solid @theme-orange;
-}
-
-#custom-memory.normal {
-    color: @theme-text-primary;
-}
-
-#custom-memory.normal {
-    color: @theme-green;
-}
-
-#custom-memory.high {
-    color: @theme-orange;
-}
-
-#custom-memory.limit {
-    color: @theme-red;
-}
-
-#custom-mic.low {
-    padding: 8px 15px 8px 35px;
-    background-position: 14px center;
-    font-size: 14px;
-    border-bottom: 1px solid @theme-terciary-accent;
-    background-color: @theme-dark;
-    background-image: url("./resources/img/mic-disconnected.svg");
-    background-repeat: no-repeat;
-}
-
-#custom-mic.normal {
-    padding-left: 20px;
-    background: url("./resources/img/mic-connected.svg");
-    background-repeat: no-repeat;
-    background-position: left center;
+    background: @theme-main-bg;
+    padding: 0 10px;
     margin-right: 10px;
 }
 
 #network {
-    padding: 8px 0px 8px 20px;
-    background-position: 14px center;
-    font-size: 14px;
-    border-bottom: 1px solid @theme-terciary-accent;
-    background-color: @theme-dark;
-    background: url("./resources/img/wifi-disconnected.svg");
-    background-repeat: no-repeat;
+    color: @theme-text-primary;
+    background: @theme-main-bg;
+    padding: 6px 10px 6px 15px;
+    /* border-radius: 10px 0 0 10px; */
 }
 
-#network.disabled {
-    background: url("./resources/img/wifi-disconnected.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
+#battery {
+    background: @theme-main-bg;
+    padding: 6px 10px;
 }
 
-#network.disconnected {
-    background: url("./resources/img/wifi-disconnected.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
+#battery.charging {
+    color: @theme-green;
 }
 
-#network.ethernet {
-    background: url("./resources/img/link.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
+#battery.warning {
+    color: @theme-orange;
 }
 
-#network.wifi {
-    background: url("./resources/img/wifi-connected.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
+#battery.critical {
+    color: @theme-red;
 }
+
+/*
+ * Backlight
+ */
+#backlight {
+    color: @theme-yellow;
+}
+
 
 #custom-bluetooth {
-    padding: 8px 0px 8px 20px;
-    background-position: 14px center;
-    font-size: 14px;
-    border-bottom: 1px solid @theme-blue;
-    background-color: @theme-dark;
-    background-repeat: no-repeat;
+    color: @theme-text-primary;
+    background: @theme-main-bg;
+    padding: 6px 10px 6px 15px;
+    /* border-radius: 0 10px 10px 0; */
 }
 
 #custom-bluetooth.off {
-    background: url("./resources/img/bluetooth-failed.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
+    color: @theme-dark-shade;
 }
 
 #custom-bluetooth.disconnected {
-    background: url("./resources/img/bluetooth-disconnected.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
+    color: @theme-dark-shade;
 }
 
 #custom-bluetooth.connected {
-    background: url("./resources/img/bluetooth-connected.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
+    color: @theme-text-primary;
 }
 
 #custom-power {
-    padding: 8px 0px 8px 20px;
-    background-position: center center;
-    font-size: 14px;
-    border-bottom: 1px solid @theme-red;
-    background-color: @theme-dark;
-    background-image: url("./resources/img/power.svg");
-    background-repeat: no-repeat;
-    margin-right: 5px;
+    padding: 6px 10px;
+    background-color: @theme-main-bg;
+    color: @theme-orange;
+    /* border-radius: 6px; */
 }
 
 tooltip.background {
