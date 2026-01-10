@@ -43,14 +43,14 @@
             "(.*):brave-github.com.*": "\ue943 $1",
             "(.*):chromium": "\ue948 $1",
             "(.*):Alacritty": "\uf120  $1",
-            "(.*):brave-agimnkijcaahngcdmfeangaknmldooml.*": "\ue96c $1",//youtube
+            "(.*):brave-agimnkijcaahngcdmfeangaknmldooml.*": "\ue96c $1", //youtube
             "(.*)web.whatsapp.*": "\ue96b $1",
             "(.*)jira.*": "\ue94b $1",
             "(.*)app.hubspot.*": "\ue949 $1",
             "(.*)docs.google.com__spreadsheets.*": "\ue951 $1",
             "(.*)jenkins.*": "\ue971 $1",
             "(.*):com.mitchellh.ghostty": "\uf120  $1"
-        },
+        }
         // "separate-outputs": true
     },
     //----------- Modules center
@@ -66,6 +66,7 @@
     //----------- Modules right
     "modules-right": [
         "custom/rec",
+        // "custom/teams",
         "cpu",
         "memory",
         "custom/sep",
@@ -92,7 +93,7 @@
     },
     "memory": {
         "interval": 30,
-        "format": "\ue90b {}%",
+        "format": "\ue971 {}%",
         "max-length": 10,
         "tooltip": true,
         "tooltip-format": "{used:0.1f}GiB used",
@@ -104,6 +105,11 @@
         "interval": 1,
         "on-click": "hyprcap rec -s window:active -w -n"
     },
+    "custom/teams": {
+        "exec": "waybar-teams",
+        "interval": 2,
+        "tooltip": false
+    },
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{volume}% {icon}",
@@ -112,7 +118,10 @@
             "headphone": "\ue912",
             "hands-free": "\ue912",
             "headset": "\ue912",
-            "default": ["\ue905", "\ue907"]
+            "default": [
+                "\ue905",
+                "\ue907"
+            ]
         },
         "scroll-step": 1,
         "states": {
