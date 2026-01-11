@@ -8,18 +8,21 @@ clients=$(hyprctl clients -j)
 # fi
 
 state=$(echo "$clients" | jq -r '
-  if any(.[]; .class | test("^brave-teams\\.microsoft\\.com")) then
-    if any(.[]; .class | test("^brave-teams\\.microsoft\\.com")
-                and (.title | contains("Sign in to your account"))) then
-      "logged-out"
-    else
-      "logged-in"
-    end
-  else
+  if type != "array" or length == 0 then
     "not-running"
+  else
+    . as $arr |
+    if any($arr[]; .class | test("^brave-teams\\.microsoft\\.com")) then
+      if any($arr[]; (.class | test("^brave-teams\\.microsoft\\.com")) and (.title // "" | contains("Sign in to your account"))) then
+        "logged-out"
+      else
+        "logged-in"
+      end
+    else
+      "not-running"
+    end
   end
 ')
-
 case "$state" in
   logged-out)
     logged_in=0
