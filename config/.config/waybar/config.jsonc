@@ -41,6 +41,7 @@
             "(.*):brave-bitbucket.*": "\ue93d $1",
             "(.*):brave-browser": "\ue93e $1",
             "(.*):brave-github.com.*": "\ue943 $1",
+            "(.*):brave-teams.microsoft.com.*": "\ue953 $1",
             "(.*):chromium": "\ue948 $1",
             "(.*):Alacritty": "\uf120  $1",
             "(.*):brave-agimnkijcaahngcdmfeangaknmldooml.*": "\ue96c $1", //youtube
@@ -66,7 +67,8 @@
     //----------- Modules right
     "modules-right": [
         "custom/rec",
-        // "custom/teams",
+        "custom/teams",
+        "custom/sep",
         "cpu",
         "memory",
         "custom/sep",
@@ -106,9 +108,15 @@
         "on-click": "hyprcap rec -s window:active -w -n"
     },
     "custom/teams": {
+        "on-click": "teams-open",
+        "format": "{icon}<span foreground=\"#F7768E\">{text}</span>",
         "exec": "waybar-teams",
-        "interval": 2,
-        "tooltip": false
+        "return-type": "json",
+        "interval": 5,
+        "tooltip": true,
+        "format-icons": {
+            "default": "\ue953"
+        }
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",

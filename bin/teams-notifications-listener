@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+COUNT_FILE="$HOME/.cache/teams_unread"
+mkdir -p "$(dirname "$COUNT_FILE")"
+touch "$COUNT_FILE"
+
+dbus-monitor "interface='org.freedesktop.Notifications'" |
+while read -r line; do
+  # Teams PWA notifications usually contain "Teams" or "Microsoft Teams"
+  if echo "$line" | grep -qi "teams"; then
+    count=$(cat "$COUNT_FILE")
+    echo $((count + 1)) > "$COUNT_FILE"
+  fi
+done
+

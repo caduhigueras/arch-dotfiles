@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+COUNT_FILE="$HOME/.cache/teams_unread"
+HYPR_SOCKET="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+
+[ -S "$HYPR_SOCKET" ] || exit 1
+
+socat -u UNIX-CONNECT:"$HYPR_SOCKET" - |
+while read -r line; do
+  # Window title/class usually contains "Teams"
+  if echo "$line" | grep -qi "activewindow" && echo "$line" | grep -qi "teams"; then
+    echo 0 > "$COUNT_FILE"
+  fi
+done
+
