@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+WALLDIR="$HOME/.config/themes/current/wallpapers"
+LINK="$HOME/.config/themes/current/wallpaper.jpg"
+
+CURRENT=$(readlink -f "$HOME/.config/themes/current/wallpaper.jpg")
+CURRENT=$(basename "$CURRENT")
+
+mapfile -t WALLPAPERS < <(find -L "$WALLDIR" -type f | sort)
+
+NEXT=false
+
+for w in "${WALLPAPERS[@]}"; do
+    if [[ "$(basename "$w")" == "$CURRENT" ]]; then
+        NEXT=true
+        continue
+    fi
+
+    if $NEXT; then
+        ln -sf "$w" "$LINK"
+        exit 0
+    fi
+done
+
+# Wrap around to first
+ln -sf "${WALLPAPERS[0]}" "$LINK"
+

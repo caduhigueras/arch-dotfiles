@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+clients=$(hyprctl clients -j)
+
+# Check if Teams is open
+# if ! echo "$clients" | jq -e '.[] | select(.class | test("^brave-teams\\.microsoft\\.com"))' >/dev/null; then
+#     exit 0
+# fi
+
+state=$(echo "$clients" | jq -r '
+  if type != "array" or length == 0 then
+    "not-running"
+  else
+    . as $arr |
+    if any($arr[]; .class | test("^brave-teams\\.microsoft\\.com")) then
+      if any($arr[]; (.class | test("^brave-teams\\.microsoft\\.com")) and (.title // "" | contains("Sign in to your account"))) then
+        "logged-out"
+      else
+        "logged-in"
+      end
+    else
+      "not-running"
+    end
+  end
+')
+case "$state" in
+  logged-out)
+    logged_in=0
+    tooltip="Not logged in"
+    class="logged-out"
+    ;;
+  logged-in)
+    logged_in=1
+    tooltip="No unread messages"
+    class="logged-in"
+    ;;
+  not-running)
+    logged_in=0
+    class="not-running"
+    tooltip="Teams is not running"
+    ;;
+esac
+
+# Unread count (optional external source)
+COUNT_FILE="$HOME/.cache/teams_unread"
+count=$(cat "$COUNT_FILE" 2>/dev/null || echo 0)
+
+# Build text
+text=""
+
+if [[ "$logged_in" -eq 1 && "$count" -gt 0 ]]; then
+    text=" $count"
+fi
+
+printf '{"text":"%s","tooltip":"%s","class":"%s"}\n' "$text" "$tooltip" "$class"
+

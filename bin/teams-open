@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Try to find the Brave Teams window
+addr=$(hyprctl clients -j | jq -r '
+  .[]
+  | select(.class | test("^brave-teams\\.microsoft\\.com"))
+  | .address
+' | head -n1)
+
+if [ -n "$addr" ]; then
+    # Get the workspace of the window
+    ws=$(hyprctl clients -j | jq -r ".[] | select(.address == \"$addr\") | .workspace.id")
+    [ -z "$ws" ] && exit 1
+
+    # Find the vdesk containing this workspace
+    vdesk=$(hyprctl printstate | awk -v target="$ws" '
+      /^- / { sub(/^- /, "", $0); vd=$0; next }
+      /Workspaces:/ {
+        gsub(/Workspaces:[ ]*/, "")
+        split($0, w, ",")
+        for (i in w) {
+          gsub(/ /, "", w[i])
+          if (w[i] == target) { print vd; exit }
+        }
+      }
+    ')
+
+    desk_number="${vdesk##*:}"
+    desk_number="${desk_number// /}"  # remove any spaces
+    
+    # 4) Switch to that vdesk
+    [ -n "$vdesk" ] && hyprctl dispatch vdesk "$desk_number"
+
+    # 5) Focus the window
+    hyprctl dispatch focuswindow "address:$addr"
+else
+    # Not found → launch app
+    webapp-launcher https://teams.microsoft.com/v2/ &
+fi
+

@@ -105,6 +105,20 @@ window#waybar {
     /* border-radius: 10px; */
 }
 
+#custom-teams {
+    background: @theme-main-bg;
+    padding: 0 8px;
+    color: @theme-text-primary;
+}
+#custom-teams.logged-out {
+    color: @theme-dark-shade;
+}
+
+#custom-teams.not-running {
+    color: @theme-dark-shade;
+}
+
+
 /*
  * CPU / Memory
  */
