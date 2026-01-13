@@ -1,0 +1,7 @@
+#!/bin/bash
+
+timestamp=$(date +%Y%m%d%H%M%s)
+scratch_path="$HOME/files/scratches/scratch_$timestamp.txt"
+
+touch "$scratch_path"
+nvim "$scratch_path"
