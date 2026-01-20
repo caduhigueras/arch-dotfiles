@@ -120,7 +120,7 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth": "\ue912 {volume}%",
         "format-muted": "\ue906",
         "format-icons": {
             "headphone": "\ue912",
