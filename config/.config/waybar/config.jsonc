@@ -66,6 +66,8 @@
     },
     //----------- Modules right
     "modules-right": [
+        "custom/vpn",
+        "custom/vpn-sep",
         "custom/rec",
         "custom/teams",
         "custom/sep",
@@ -82,6 +84,21 @@
         "custom/sep",
         "custom/power"
     ],
+    "custom/vpn": {
+        "return-type": "json",
+        "format": "\ue933 {}",
+        "exec-if": "nmcli -t -f TYPE connection show --active | grep -qx vpn",
+        "exec": "waybar-vpn",
+        "on-click": "waybar-vpn-disconnect",
+        "interval": 5
+    },
+    "custom/vpn-sep": {
+        "format": "\ue93a",
+        "exec": "echo '{\"class\": \"connected\"}'",
+        "exec-if": "nmcli -t -f TYPE connection show --active | grep -qx vpn",
+        "tooltip": false,
+        "interval": 5
+    },
     "custom/sep": {
         "format": "\ue93a",
         "tooltip": false,
@@ -209,3 +226,4 @@
         ]
     }
 }
+
