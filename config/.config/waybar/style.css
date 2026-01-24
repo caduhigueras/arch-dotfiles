@@ -105,11 +105,18 @@ window#waybar {
     /* border-radius: 10px; */
 }
 
+#custom-vpn {
+    background: @theme-main-bg;
+    padding: 0 8px;
+    color: @theme-text-primary;
+}
+
 #custom-teams {
     background: @theme-main-bg;
     padding: 0 8px;
     color: @theme-text-primary;
 }
+
 #custom-teams.logged-out {
     color: @theme-dark-shade;
 }
@@ -155,6 +162,12 @@ window#waybar {
 }
 
 #custom-sep {
+    color: @theme-dark-shade;
+    padding: 0 5px;
+    font-size: 7px;
+}
+
+#custom-vpn-sep {
     color: @theme-dark-shade;
     padding: 0 5px;
     font-size: 7px;
@@ -262,3 +275,4 @@ tooltip label {
     border: 1px solid #FF9E64;
     box-shadow: none;
 }
+

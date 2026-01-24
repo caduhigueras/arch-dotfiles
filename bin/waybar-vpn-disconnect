@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+text=$(nmcli -t -f NAME,TYPE connection show --active | awk -F: '$2=="vpn"{print $1}')
+
+nmcli connection down "$text"

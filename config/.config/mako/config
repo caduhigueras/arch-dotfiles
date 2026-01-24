@@ -1,0 +1,25 @@
+font=JetBrainsMonoNL Nerd Font 10
+layer=overlay
+default-timeout=10000
+
+width=300
+margin=10
+anchor=top-center
+padding=25
+border-size=2
+border-radius=0
+
+background-color=#222222
+text-color=#A9B1D6
+border-color=#A9B1D6
+
+format=<b>%s</b>\n%b
+
+# Default behavior for everything else
+on-button-left=invoke-default-action
+on-button-right=dismiss
+
+# Any notification whose body contains teams.microsoft.com
+[body~="teams\\.microsoft\\.com"]
+on-button-left=exec /usr/local/bin/teams-open
+

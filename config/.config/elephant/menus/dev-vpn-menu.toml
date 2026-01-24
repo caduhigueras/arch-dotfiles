@@ -1,0 +1,28 @@
+name = "dev_vpn_menu"
+name_pretty = "Dev VPN"
+fixed_order = true
+
+[[entries]]
+text = "VPN1 Connect"
+actions = { "vpn1" = "nmcli connection up vpn1" }
+
+[[entries]]
+text = "VPN1 Disconnect"
+actions = { "vpn1_disconnect" = "nmcli connection down vpn1" }
+
+[[entries]]
+text = "VPN2 Connect"
+actions = { "vpn2" = "nmcli connection up vpn2" }
+
+[[entries]]
+text = "VPN2 Disconnect"
+actions = { "vpn2_disconnect" = "nmcli connection down vpn2" }
+
+[[entries]]
+text = "Openforti Connect"
+actions = { "todo" = "" }
+
+[[entries]]
+text = "Openforti Disconnect"
+actions = { "todo" = "" }
+
