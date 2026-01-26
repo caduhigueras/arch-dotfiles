@@ -1,10 +1,15 @@
 [Unit]
 Description=Walker Menu Service
+PartOf=graphical-session.target
+After=graphical-session.target
+Requires=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
 
 [Service]
-ExecStart=/usr/local/bin/walker --gapplication-service
+Type=simple
+ExecStart=/usr/bin/walker --gapplication-service
+Slice=session.slice
 Restart=on-failure
 
 [Install]
-WantedBy=default.target
-
+WantedBy=graphical-session.target
