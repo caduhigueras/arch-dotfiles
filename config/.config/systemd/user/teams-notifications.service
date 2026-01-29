@@ -1,0 +1,17 @@
+[Unit]
+Description=Counts notifications from teams
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+type=simple
+ExecStart=/usr/local/bin/teams-notification-listener
+Restart=always
+RestarSec=1
+
+KillSignal=SIGINT
+TimeoutStopSec=5
+
+[Install]
+WantedBy=default.target
+

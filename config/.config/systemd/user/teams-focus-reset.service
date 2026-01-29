@@ -1,0 +1,14 @@
+[Unit]
+Description=Reset Teams unread counter on focus
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+type=simple
+ExecStart=/usr/local/bin/teams-reset-count-on-focus
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=default.target
+
