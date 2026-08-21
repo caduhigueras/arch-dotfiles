@@ -8,6 +8,8 @@
         "custom/sep",
         "cffi/virtual-desktops",
         "custom/sep",
+        "custom/special-workspaces",
+        "custom/sep",
         "hyprland/window"
     ],
     "custom/kr-menu": {
@@ -33,20 +35,27 @@
         "initial": true,
         "show_empty": true
     },
+    "custom/special-workspaces": {
+        "exec": "/home/arch/.config/waybar/scripts/special-workspaces",
+        "return-type": "json",
+        "restart-interval": 3,
+        "tooltip": true
+    },
     "hyprland/window": {
         "max-length": 40,
         "format": "{title}:{class}",
         "rewrite": {
             "(.*):firefox": "\ue955 $1",
-            "(.*):brave-bitbucket.*": "\ue93d $1",
-            "(.*):brave-browser": "\ue93e $1",
-            "(.*):brave-github.com.*": "\ue943 $1",
-            "(.*):brave-teams.microsoft.com.*": "\ue953 $1",
+            "(.*)Bitbucket:Brave-Browser.*": "\ue93d $1",
+            // "(.*):brave-browser": "\ue93e $1",
+            "(.*)YouTube:Brave-Browser": "\ue96c $1",
+            "(.*)GitHub:Brave-Browser": "\ue943 $1",
+            "(.*)Teams:Brave-Browser": "\ue953 $1",
             "(.*):chromium": "\ue948 $1",
             "(.*):Alacritty": "\uf120  $1",
-            "(.*):brave-agimnkijcaahngcdmfeangaknmldooml.*": "\ue96c $1", //youtube
             "(.*)web.whatsapp.*": "\ue96b $1",
             "(.*)jira.*": "\ue94b $1",
+            "(.*)fhenkmdjdkggapjhjkncbnimjoecbopg.*": "\ue949 $1",
             "(.*)app.hubspot.*": "\ue949 $1",
             "(.*)docs.google.com__spreadsheets.*": "\ue951 $1",
             "(.*)jenkins.*": "\ue971 $1",
@@ -66,6 +75,8 @@
     },
     //----------- Modules right
     "modules-right": [
+        "custom/openfortivpn",
+        "custom/openfortivpn-sep",
         "custom/vpn",
         "custom/vpn-sep",
         "custom/rec",
@@ -83,7 +94,23 @@
         "custom/bluetooth",
         "custom/sep",
         "custom/power"
+        // "tray"
     ],
+    "tray": {
+        "spacing": 10
+    },
+    "custom/openfortivpn": {
+        "exec": "ip link show ppp0 >/dev/null 2>&1 && echo '\ue933 ON' || echo ''",
+        "interval": 5,
+        "tooltip": true
+    },
+    "custom/openfortivpn-sep": {
+        "format": "\ue93a",
+        "exec": "echo '{\"class\": \"connected\"}'",
+        "exec-if": "ip link show ppp0 >/dev/null 2>&1",
+        "tooltip": false,
+        "interval": 5
+    },
     "custom/vpn": {
         "return-type": "json",
         "format": "\ue933 {}",
@@ -226,4 +253,3 @@
         ]
     }
 }
-

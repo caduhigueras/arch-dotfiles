@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+# Waybar custom module: special-workspace indicator.
+#
+# Shows one icon per Hyprland special workspace and colours the icon of
+# whichever special workspace is currently open (via togglespecialworkspace).
+# Event-driven off Hyprland's socket2, so it reacts instantly.
+#
+# Run with "once" to print a single line and exit (handy for testing):
+#     ./special-workspaces once
+
+# --- Configuration -----------------------------------------------------------
+# `names` sets the order shown in the bar. Each name is the special workspace
+# name WITHOUT the "special:" prefix (what you pass to togglespecialworkspace).
+# Icons are kr-icons codepoints. They render via the monochrome "KR Icons Mono"
+# font (set in style.css for #custom-special-workspaces) so the per-icon
+# colours below actually apply — the stock color kr-icons.ttf would ignore them.
+names=(magic auxiliary qnav obsidian whatsapp)
+
+declare -A ICON=(
+    [magic]=$'\ue997'      # magic wand
+    [auxiliary]=$'\ue999'  # wrench
+    [qnav]=$'\ue995'       # rocket
+    [obsidian]=$'\ue998'   # book / vault
+    [whatsapp]=$'\ue996'   # whatsapp
+)
+declare -A COLOR=(
+    [magic]='#E0AF68'      # yellow
+    [auxiliary]='#7AA2F7'  # blue
+    [qnav]='#9ECE6A'       # green
+    [obsidian]='#BB9AF7'   # purple
+    [whatsapp]='#73DACB'   # teal
+)
+INACTIVE='#414868'         # muted (Tokyo Night dark-shade)
+# -----------------------------------------------------------------------------
+
+render() {
+    # newline-separated list of open special workspaces (prefix stripped)
+    local active
+    active=$(hyprctl monitors -j 2>/dev/null | jq -r \
+        '.[].specialWorkspace.name | select(startswith("special:")) | ltrimstr("special:")')
+
+    local text="" open=()
+    for n in "${names[@]}"; do
+        local c=$INACTIVE
+        if grep -qxF -- "$n" <<<"$active"; then
+            c=${COLOR[$n]}
+            open+=("$n")
+        fi
+        text+="<span foreground='$c'>${ICON[$n]}</span> "
+    done
+    text=${text% }  # trim trailing space
+
+    local tip="No special workspace open"
+    ((${#open[@]})) && tip="Open: ${open[*]}"
+
+    jq -cn --arg text "$text" --arg tooltip "$tip" '{text:$text, tooltip:$tooltip}'
+}
+
+render                                   # initial state
+[[ $1 == once ]] && exit 0
+
+sock="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
+
+# Stream events via a coproc (not a pipeline) so we hold socat's PID and can
+# kill it when waybar terminates us on reload. Without this, each reload would
+# orphan the socat reader and leak it onto socket2.
+coproc SOCAT { exec socat -u UNIX-CONNECT:"$sock" - 2>/dev/null; }
+cleanup() { kill "${SOCAT_PID:-0}" 2>/dev/null; }
+trap 'exit 0' TERM INT HUP     # trapped signals -> run the EXIT trap
+trap cleanup EXIT
+
+# re-render on any activespecial / activespecialv2 event.
+while IFS= read -r line <&"${SOCAT[0]}"; do
+    [[ $line == activespecial* ]] && render
+done
+# socat ended (Hyprland exited); fall through to EXIT trap, waybar restarts us.

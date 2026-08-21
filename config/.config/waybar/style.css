@@ -27,7 +27,9 @@ window#waybar {
     color: @theme-text-primary;
 }
 
-.modules-left, .modules-center, .modules-right {
+.modules-left,
+.modules-center,
+.modules-right {
     padding: 8px 10px;
 }
 
@@ -89,6 +91,20 @@ window#waybar {
     margin: 0;
 }
 
+/*
+ * Special workspaces (custom/special-workspaces)
+ * Per-icon colours come from the script's pango markup; this only styles the box.
+ */
+#custom-special-workspaces {
+    background: @theme-main-bg;
+    padding: 6px 10px;
+    font-size: 20px;
+    /* Monochrome copy of kr-icons (COLR/CPAL stripped) so the script's
+       per-icon pango colours actually apply. The color original is unchanged
+       and still used by every other module. */
+    font-family: "KR Icons Mono", "JetBrainsMono Nerd Font", monospace;
+}
+
 #window {
     background: @theme-main-bg;
     padding: 6px 10px;
@@ -103,6 +119,12 @@ window#waybar {
     background: @theme-main-bg;
     padding: 6px 10px;
     /* border-radius: 10px; */
+}
+
+#custom-openfortivpn {
+    background: @theme-main-bg;
+    padding: 0 8px;
+    color: @theme-text-primary;
 }
 
 #custom-vpn {
@@ -162,6 +184,12 @@ window#waybar {
 }
 
 #custom-sep {
+    color: @theme-dark-shade;
+    padding: 0 5px;
+    font-size: 7px;
+}
+
+#custom-openfortivpn-sep {
     color: @theme-dark-shade;
     padding: 0 5px;
     font-size: 7px;
@@ -275,4 +303,3 @@ tooltip label {
     border: 1px solid #FF9E64;
     box-shadow: none;
 }
-

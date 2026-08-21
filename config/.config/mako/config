@@ -20,6 +20,6 @@ on-button-left=invoke-default-action
 on-button-right=dismiss
 
 # Any notification whose body contains teams.microsoft.com
-[body~="teams\\.microsoft\\.com"]
+[body~="brave-teams\\.microsoft\\.com"]
 on-button-left=exec /usr/local/bin/teams-open
 
