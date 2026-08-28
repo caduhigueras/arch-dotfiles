@@ -32,5 +32,5 @@ count=$(wc -l <<<"$devices" | tr -d ' ')
 
 tooltip=$(printf "%s\n" "$devices" | sed '/^$/d')
 
-printf '{"text":"\ue90e","tooltip":"%s","class":"connected"}\n' "$tooltip"
+printf '{"text":"\ue444","tooltip":"%s","class":"connected"}\n' "$tooltip"
 

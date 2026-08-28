@@ -13,8 +13,7 @@
         "hyprland/window"
     ],
     "custom/kr-menu": {
-        "format": "\ue93c",
-        // "format": "\ue96f",
+        "format": "\ue404",
         "tooltip": true,
         "tooltip-format": "Open KodingRocks Menu",
         "on-click": "walker -m menus:kr_menu --minheight 1 -HN"
@@ -25,12 +24,12 @@
         "subscribe": true,
         "format": "{icon}",
         "format_icons": {
-            "1": "\ue921",
-            "2": "\ue922",
-            "3": "\ue91d",
-            "4": "\ue91e",
-            "5": "\ue91f",
-            "6": "\ue920"
+            "1": "\ue457",
+            "2": "\ue458",
+            "3": "\ue453",
+            "4": "\ue454",
+            "5": "\ue455",
+            "6": "\ue456"
         },
         "initial": true,
         "show_empty": true
@@ -45,21 +44,21 @@
         "max-length": 40,
         "format": "{title}:{class}",
         "rewrite": {
-            "(.*):firefox": "\ue955 $1",
-            "(.*)Bitbucket:Brave-Browser.*": "\ue93d $1",
+            "(.*):firefox": "\ue41D $1",
+            "(.*)Bitbucket:Brave-Browser.*": "\ue405 $1",
             // "(.*):brave-browser": "\ue93e $1",
-            "(.*)YouTube:Brave-Browser": "\ue96c $1",
-            "(.*)GitHub:Brave-Browser": "\ue943 $1",
-            "(.*)Teams:Brave-Browser": "\ue953 $1",
-            "(.*):chromium": "\ue948 $1",
-            "(.*):Alacritty": "\uf120  $1",
-            "(.*)web.whatsapp.*": "\ue96b $1",
-            "(.*)jira.*": "\ue94b $1",
-            "(.*)fhenkmdjdkggapjhjkncbnimjoecbopg.*": "\ue949 $1",
-            "(.*)app.hubspot.*": "\ue949 $1",
-            "(.*)docs.google.com__spreadsheets.*": "\ue951 $1",
-            "(.*)jenkins.*": "\ue971 $1",
-            "(.*):com.mitchellh.ghostty": "\uf120  $1"
+            "(.*)YouTube:Brave-Browser": "\ue406 $1",
+            "(.*)GitHub:Brave-Browser": "\ue40b $1",
+            "(.*)Teams:Brave-Browser": "\ue41B $1",
+            "(.*):chromium": "\ue410 $1",
+            "(.*):Alacritty": "\ue47d  $1",
+            "(.*)web.whatsapp.*": "\ue433 $1",
+            "(.*)jira.*": "\ue413 $1",
+            "(.*)fhenkmdjdkggapjhjkncbnimjoecbopg.*": "\ue47d $1",
+            "(.*)app.hubspot.*": "\ue411 $1",
+            "(.*)docs.google.com__spreadsheets.*": "\ue419 $1",
+            // "(.*)jenkins.*": "\ue971 $1",
+            "(.*):com.mitchellh.ghostty": "\ue47d  $1"
         }
         // "separate-outputs": true
     },
@@ -69,7 +68,7 @@
     ],
     "clock": {
         "timezone": "Europe/Madrid",
-        "format": "\ue936 {:%b %d %H:%M}",
+        "format": "\ue46c {:%b %d %H:%M}",
         "on-click": "alacritty --class centered_float_window -e kr_calendar_tui",
         "tooltip-format": "{:%A, %d of %B of %Y - %H:%M}"
     },
@@ -113,33 +112,33 @@
     },
     "custom/vpn": {
         "return-type": "json",
-        "format": "\ue933 {}",
+        "format": "VPN {}",
         "exec-if": "nmcli -t -f TYPE connection show --active | grep -qx vpn",
         "exec": "waybar-vpn",
         "on-click": "waybar-vpn-disconnect",
         "interval": 5
     },
     "custom/vpn-sep": {
-        "format": "\ue93a",
+        "format": "\ue43e",
         "exec": "echo '{\"class\": \"connected\"}'",
         "exec-if": "nmcli -t -f TYPE connection show --active | grep -qx vpn",
         "tooltip": false,
         "interval": 5
     },
     "custom/sep": {
-        "format": "\ue93a",
+        "format": "\ue43e",
         "tooltip": false,
         "interval": "once"
     },
     "cpu": {
         "interval": 10,
-        "format": "\ue901 {}%",
+        "format": "\ue472 {}%",
         "max-length": 10,
         "on-click": "alacritty --class centered_float_window -e btop"
     },
     "memory": {
         "interval": 30,
-        "format": "\ue971 {}%",
+        "format": "\ue401 {}%",
         "max-length": 10,
         "tooltip": true,
         "tooltip-format": "{used:0.1f}GiB used",
@@ -159,20 +158,20 @@
         "interval": 5,
         "tooltip": true,
         "format-icons": {
-            "default": "\ue953"
+            "default": "\ue41b"
         }
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-bluetooth": "\ue912 {volume}%",
-        "format-muted": "\ue906",
+        "format-bluetooth": "\ue448 {volume}%",
+        "format-muted": "\ue43c",
         "format-icons": {
-            "headphone": "\ue912",
-            "hands-free": "\ue912",
-            "headset": "\ue912",
+            "headphone": "\ue448",
+            "hands-free": "\ue448",
+            "headset": "\ue448",
             "default": [
-                "\ue905",
-                "\ue907"
+                "\ue43b",
+                "\ue43d"
             ]
         },
         "scroll-step": 1,
@@ -194,11 +193,11 @@
         "on-click": "alacritty --class centered_float_window -e wiremix"
     },
     "network": {
-        "format-wifi": "\ue92c",
-        "format-ethernet": "\ue90a",
+        "format-wifi": "\ue462",
+        "format-ethernet": "\ue440",
         "tooltip-format": "{ifname} via {gwaddr}",
         // "format-linked": "\u",
-        "format-disconnected": "\ue92d",
+        "format-disconnected": "\ue463",
         "on-click": "alacritty --class centered_float_window -e impala"
     },
     "custom/bluetooth": {
@@ -210,7 +209,7 @@
         "on-click": "alacritty --class centered_float_window -e bluetui"
     },
     "custom/power": {
-        "format": "\ue935",
+        "format": "\ue46a",
         "tooltip": true,
         "tooltip-format": "Open Power Menu",
         "on-click": "walker -m menus:power_menu --minheight 1 -HNn"
@@ -239,17 +238,17 @@
         },
         "format": "{icon}",
         "format-full": "{icon}",
-        "format-charging": "{icon} \ue970",
+        "format-charging": "{icon} \ue470",
         "format-plugged": "",
         "tooltip-format": "{timeTo} - {capacity}%",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": [
-            "\uf244",
-            "\uf243",
-            "\uf242",
-            "\uf241",
-            "\uf240"
+            "\ue47c",
+            "\ue47b",
+            "\ue47a",
+            "\ue479",
+            "\ue478"
         ]
     }
 }

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+systemctl --user restart elephant
+/usr/bin/walker --gapplication-service
+

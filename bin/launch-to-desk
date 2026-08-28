@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+desk="$1"
+selector="$2"
+shift 2
+
+# launch the command
+"$@" & disown
+
+# extract the selector value (class/title/etc)
+needle="${selector#*:}"
+
+# wait for the window to exist
+while ! hyprctl clients | grep -q "$needle"; do
+  sleep 0.2
+done
+
+sleep 0.5
+# move it silently to the vdesk
+hyprctl dispatch movetodesksilent "$desk",class:"$needle"
+

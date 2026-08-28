@@ -17,7 +17,7 @@
 @define-color theme-quartenary-accent #BB9AF7;
 
 * {
-    font-family: "KR Icons Mono", "JetBrainsMono Nerd Font", monospace;
+    font-family: "JetBrainsMono Nerd Font", "KR Icons Mono", monospace;
     /* padding: 0; */
 }
 

@@ -16,10 +16,10 @@ vol=$(awk -v v="$vol_float" 'BEGIN{printf "%d", v*100 + 0.5}')
 
 if [[ "$mute" == "yes" || "$vol" -eq 0 ]]; then
   class="low"
-  icon="\ue904"
+  icon="\ue43a"
 else
   class="normal"
-  icon="\ue903"
+  icon="\ue439"
 fi
 
 printf '{"text":"%s %s%%","tooltip":"%s%%","class":"%s","icon":"%s"}\n' "$icon" "$vol" "$vol" "$class" "$icon"
