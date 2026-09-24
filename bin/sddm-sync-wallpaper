@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Copies the current wallpaper (as chosen by wallpaper-toggle) into the
+# installed SDDM theme, so the login screen background matches the desktop.
+# Needs root -- writes into /usr/share/sddm/themes/. wallpaper-toggle invokes
+# this via `sudo` under a NOPASSWD rule scoped to this exact script with no
+# arguments (see sddm/sudoers.d/ in the repo for the rule to install).
+set -euo pipefail
+
+cp -L /home/arch/.config/themes/current/wallpaper.jpg /usr/share/sddm/themes/kr_minimal/bg.jpg

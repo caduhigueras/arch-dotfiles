@@ -1,38 +1,47 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.15
 import SddmComponents 2.0
 
 Rectangle {
     id: root
     width: 1920
     height: 1080
+    color: "#1A1B26"
 
+    // Background is blurred + brightness/contrast-adjusted to roughly match
+    // hyprlock's background{} block (config/.config/hypr/hyprlock.conf):
+    // blur_passes=3, contrast=0.8916, brightness=0.8172. FastBlur/
+    // BrightnessContrast auto-hide the item they reference as `source` while
+    // still using it as the effect's input, so `bg`/`blurred` themselves
+    // must stay visible: true -- setting them to false (as a previous
+    // attempt at this did) breaks the effect chain and shows nothing.
     Image {
         id: bg
         anchors.fill: parent
         source: "bg.jpg"
         fillMode: Image.PreserveAspectCrop
-        opacity: 0.7
     }
 
-   Rectangle {
-       anchors.fill: parent
-       color: "#1A1B26"
-       opacity: 0.35
-   }
+    FastBlur {
+        id: blurred
+        anchors.fill: bg
+        source: bg
+        radius: 128
+    }
 
-//    TextField {
-//        id: passwordInput
-//        width: 450
-//        height: 120
-//        anchors.centerIn: parent
-//        focus: true
-//        placeholderText: "Password"
-//        echoMode: TextInput.Password
-//
-//        // login(user, password, sessionIndex)
-//        onAccepted: sddm.login("arch", text, sddm.sessionIndex)
-//    }
+    BrightnessContrast {
+        anchors.fill: blurred
+        source: blurred
+        brightness: -0.18 // approximates hyprlock's brightness 0.8172 (Qt scale is -1..1, 0 = neutral)
+        contrast: -0.11 // approximates hyprlock's contrast 0.8916
+    }
+
+    Rectangle {
+        anchors.fill: parent
+        color: "#1A1B26"
+        opacity: 0.35
+    }
 
     TextField {
         id: passwordInput
@@ -85,6 +94,3 @@ Rectangle {
     }
     }
 }
-
-
-

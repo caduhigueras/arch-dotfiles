@@ -58,8 +58,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/autostart.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/autostart.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/autostart.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/autostart.lua"
         }
     },
     {
@@ -67,8 +67,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/defaults.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/defaults.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/defaults.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/defaults.lua"
         }
     },
     {
@@ -76,8 +76,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/env.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/env.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/env.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/env.lua"
         }
     },
     {
@@ -94,8 +94,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/hyprland.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/hyprland.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/hyprland.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/hyprland.lua"
         }
     },
     {
@@ -121,8 +121,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/input.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/input.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/input.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/input.lua"
         }
     },
     {
@@ -130,8 +130,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/keybindings.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/keybindings.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/keybindings.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/keybindings.lua"
         }
     },
     {
@@ -139,8 +139,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/lookAndFeel.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/lookAndFeel.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/lookAndFeel.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/lookAndFeel.lua"
         }
     },
     {
@@ -148,8 +148,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/monitors.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/monitors.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/monitors.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/monitors.lua"
         }
     },
     {
@@ -157,8 +157,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/permissions.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/permissions.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/permissions.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/permissions.lua"
         }
     },
     {
@@ -166,8 +166,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/plugins.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/plugins.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/plugins.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/plugins.lua"
         }
     },
     {
@@ -175,8 +175,8 @@
         "Subtext": "",
         "Value": "",
         "Actions": {
-            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/workspaces.conf",
-            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/workspaces.conf"
+            "open": "alacritty -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/workspaces.lua",
+            "open_float": "alacritty --class centered_float_window -e nvim /home/arch/.local/share/arch-dotfiles/config/.config/hypr/workspaces.lua"
         }
     },
     {

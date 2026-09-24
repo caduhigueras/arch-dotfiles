@@ -1,0 +1,11 @@
+# Lets wallpaper-toggle sync the login screen background unattended (no
+# terminal is available for a password prompt when it runs from a keybind).
+# Scoped to this one script, invoked with no arguments -- fixed source and
+# destination inside the script itself, so there's nothing here for an
+# argument to inject.
+#
+# Not stowable (like the rest of sddm/) -- install manually:
+#   sudo install -m 0440 -o root -g root \
+#     sddm/sudoers.d/arch-dotfiles-sddm-wallpaper /etc/sudoers.d/
+#   sudo visudo -c
+arch ALL=(root) NOPASSWD: /usr/local/bin/sddm-sync-wallpaper

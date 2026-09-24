@@ -9,6 +9,7 @@ CURRENT=$(basename "$CURRENT")
 mapfile -t WALLPAPERS < <(find -L "$WALLDIR" -type f | sort)
 
 NEXT=false
+CHOSEN="${WALLPAPERS[0]}"
 
 for w in "${WALLPAPERS[@]}"; do
     if [[ "$(basename "$w")" == "$CURRENT" ]]; then
@@ -17,11 +18,17 @@ for w in "${WALLPAPERS[@]}"; do
     fi
 
     if $NEXT; then
-        ln -sf "$w" "$LINK"
-        exit 0
+        CHOSEN="$w"
+        break
     fi
 done
 
-# Wrap around to first
-ln -sf "${WALLPAPERS[0]}" "$LINK"
+ln -sf "$CHOSEN" "$LINK"
 
+# Keep the SDDM login screen's wallpaper in sync (see bin/sddm-sync-wallpaper
+# and sddm/sudoers.d/ for the NOPASSWD rule that makes this work unattended).
+# `|| true`: this must never fail the wallpaper cycle itself (e.g. if the
+# sudoers rule isn't installed yet) -- this is the last line, so its exit
+# code would otherwise become wallpaper-toggle's own and break the
+# `wallpaper-toggle && hyprpaper-restart` keybind's `&&` chain.
+sudo sddm-sync-wallpaper || true

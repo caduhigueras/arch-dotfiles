@@ -1,0 +1,7 @@
+#!/bin/bash
+# Manually trigger the vdesk/monitor app placement normally meant to run at
+# login (see config/.config/hypr/startupApps.lua -- the automatic
+# hyprland.start trigger was disabled because it's unreliable on a real cold
+# boot for reasons not fully understood; running it by hand works reliably).
+
+hyprctl repl 'runStartupApps()'
